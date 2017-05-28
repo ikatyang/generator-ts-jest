@@ -1,6 +1,6 @@
 {
   "name": "generator-ts-jest",
-  "version": "0.0.0-dev",
+  "version": "1.0.0",
   "description": "Quick generate TypeScript project, testing with Jest",
   "keywords": [
     "yeoman-generator",
