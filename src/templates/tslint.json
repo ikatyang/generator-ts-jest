@@ -1,0 +1,3 @@
+{
+  "extends": "<%= tslint_config_preset %>"
+}

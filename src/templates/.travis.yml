@@ -1,0 +1,28 @@
+language: node_js
+
+node_js:
+<%- node_versions.map(version => `- ${JSON.stringify(version)}`).join('\n') %>
+
+env:
+- JOB=test
+
+script:
+- if [ "$JOB" = "lint" ]; then yarn run lint; fi
+- if [ "$JOB" = "test" ]; then yarn run test -- --verbose; fi
+- if [ "$JOB" = "test-coverage" ]; then yarn run test -- --verbose --coverage; fi
+
+after_success:
+- if [ "$JOB" = "test-coverage" ]; then node_modules/.bin/codecov; fi
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+matrix:
+  fast_finish: true
+  include:
+  - node_js: "stable"
+    env: JOB=lint
+  - node_js: "stable"
+    env: JOB=test-coverage

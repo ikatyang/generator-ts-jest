@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "<%= tsconfig_target %>",
+    "module": "commonjs",
+    "declaration": true
+  },
+  "include": ["<%= source_directory %>/**/*.ts"]
+}

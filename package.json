@@ -1,0 +1,40 @@
+{
+  "name": "generator-ts-jest",
+  "version": "0.0.0-dev",
+  "description": "Quick generate TypeScript project, testing with Jest",
+  "keywords": [
+    "yeoman-generator",
+    "typescript",
+    "jest"
+  ],
+  "main": "app/index.js",
+  "types": "app/index.d.ts",
+  "repository": "https://github.com/ikatyang/generator-ts-jest",
+  "homepage": "https://github.com/ikatyang/generator-ts-jest#readme",
+  "author": "ikatyang",
+  "license": "MIT",
+  "scripts": {
+    "lint": "tslint -p ./tsconfig.json --type-check",
+    "link": "ln -sf $PWD/types/* $PWD/node_modules/@types",
+    "prepublish": "yarn run link && yarn run build",
+    "prebuild": "rm -rf ./lib",
+    "build": "tsc -p tsconfig.build.json",
+    "postbuild": "cp -r ./src/templates ./app"
+  },
+  "dependencies": {
+    "dashify": "^0.2.2",
+    "yeoman-generator": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/yeoman-generator": "1.0.2",
+    "tslint": "5.3.2",
+    "tslint-config-ikatyang": "0.6.0",
+    "typescript": "2.3.3"
+  },
+  "engines": {
+    "node": ">= 6"
+  },
+  "files": [
+    "/app/**/*"
+  ]
+}

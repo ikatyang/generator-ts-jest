@@ -1,0 +1,30 @@
+{
+  "name": "<%= project_name %>",
+  "version": "0.0.0-dev",
+  "description": <%- JSON.stringify(project_description) %>,
+  "keywords": <%- JSON.stringify(project_keywords, null, 4).replace(/\n\]$/, '\n  ]') %>,
+  "main": "<%= generated_directory %>/index.js",
+  "types": "<%= generated_directory %>/index.d.ts",
+  "repository": "<%= github_repository %>",
+  "homepage": "<%= github_repository %>#readme",
+  "author": {
+    "name": "<%= user_name %>",
+    "email": "<%= user_email %>",
+    "url": "<%= github_profile %>"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --config ./jest.json",
+    "lint": "tslint -p ./tsconfig.json --type-check",
+    "prepublish": "yarn run build",
+    "prebuild": "rm -rf ./<%= generated_directory %>",
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">= <%= node_versions[0] %>"
+  },
+  "files": [
+    "/<%= generated_directory %>/**/*"
+  ]
+}

@@ -1,0 +1,13 @@
+language: node_js
+
+node_js:
+- '6'
+- 'stable'
+
+script:
+- yarn run lint
+
+cache:
+  yarn: true
+  directories:
+  - node_modules

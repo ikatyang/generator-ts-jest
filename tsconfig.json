@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "strict": true,
+    "target": "es6"
+  },
+  "include": ["src/*.ts"]
+}

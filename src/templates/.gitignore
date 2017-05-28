@@ -1,0 +1,3 @@
+coverage/
+<%= generated_directory %>/
+node_modules/

@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "include": ["<%= source_directory %>/index.ts"],
+  "compilerOptions": {
+    "rootDir": "<%= source_directory %>",
+    "outDir": "<%= generated_directory %>"
+  }
+}
