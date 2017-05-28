@@ -10,6 +10,11 @@ All changes to this project will be documented in this file.
 > - 🏠 [Internal]
 > - 💅 [Polish]
 
+## Unreleased
+
+#### 📝 Documentation
+- Fix demo image url
+
 ## v1.0.0 (2017-05-28)
 
 #### 🚀 New Feature

@@ -23,4 +23,4 @@ yarn global add yo generator-ts-jest
 yo ts-jest
 ```
 
-![demo](https://github.com/ikatyang/generator-ts-jest/blob/master/images/demo.png)
+![demo](https://github.com/ikatyang/generator-ts-jest/raw/master/images/demo.png)
