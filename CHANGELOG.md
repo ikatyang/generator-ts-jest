@@ -10,7 +10,7 @@ All changes to this project will be documented in this file.
 > - 🏠 [Internal]
 > - 💅 [Polish]
 
-## Unreleased
+## v1.0.2 (2017-06-25)
 
 #### 🐛 Bug Fix
 - Fix typo in generated `.gitattributes`
