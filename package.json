@@ -17,7 +17,7 @@
     "lint": "tslint -p ./tsconfig.json --type-check",
     "link": "ln -sf $PWD/types/* $PWD/node_modules/@types",
     "prepublish": "yarn run link && yarn run build",
-    "prebuild": "rm -rf ./lib",
+    "prebuild": "rm -rf ./app",
     "build": "tsc -p tsconfig.build.json",
     "postbuild": "cp -r ./src/templates ./app"
   },
