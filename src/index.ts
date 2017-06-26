@@ -31,7 +31,7 @@ class TSJestGenerator extends Generator {
       .forEach(filename => {
         this.fs.copyTpl(
           this.templatePath(filename),
-          this.destinationPath(filename),
+          this.destinationPath(filename.replace(/^-/, '.')),
           this.fields,
         );
       });
