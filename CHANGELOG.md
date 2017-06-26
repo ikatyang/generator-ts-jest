@@ -12,6 +12,9 @@ All changes to this project will be documented in this file.
 
 ## Unreleased
 
+#### 🚀 New Feature
+- Sort keywords in `package.json`
+
 #### 🐛 Bug Fix
 - Fix missing `.gitignore`
 
