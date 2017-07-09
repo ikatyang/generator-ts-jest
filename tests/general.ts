@@ -19,7 +19,6 @@ const default_answers: Answers = {
   node_version: '6',
   source_directory: 'src',
   generated_directory: 'lib',
-  use_yarn: true,
   use_exact_version: true,
 };
 

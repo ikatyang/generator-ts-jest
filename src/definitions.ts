@@ -12,7 +12,6 @@ export interface Answers {
   node_version: string;
   source_directory: string;
   generated_directory: string;
-  use_yarn: boolean;
   use_exact_version: boolean;
 }
 
@@ -96,12 +95,6 @@ export const get_questions = (appname: string) => [
     name: 'generated_directory',
     message: 'Generated Directory',
     default: 'lib',
-  },
-  {
-    type: 'confirm',
-    name: 'use_yarn',
-    message: 'Use Yarn',
-    default: true,
   },
   {
     type: 'confirm',
