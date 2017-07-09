@@ -101,19 +101,19 @@ export const get_questions = (appname: string) => [
   {
     type: 'confirm',
     name: 'use_exact_version',
-    message: 'Use exact version',
+    message: 'Use Exact Version',
     default: true,
   },
   {
     type: 'confirm',
     name: 'enable_codecov',
-    message: 'Enable codecov',
+    message: 'Enable Codecov',
     default: true,
   },
   {
     type: 'confirm',
     name: 'enable_greenkeeper',
-    message: 'Enable greenkeeper',
+    message: 'Enable Greenkeeper',
     default: true,
   },
 ];
