@@ -23,7 +23,8 @@
     "test": "jest --config ./jest.json"
   },
   "dependencies": {
-    "dashify": "^0.2.2",
+    "@types/lodash.kebabcase": "^4.1.2",
+    "lodash.kebabcase": "^4.1.1",
     "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {

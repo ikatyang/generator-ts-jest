@@ -1,4 +1,4 @@
-import * as dashify from 'dashify';
+import dashify = require('lodash.kebabcase'); // tslint:disable-line:no-require-imports
 import * as fs from 'fs';
 import * as Generator from 'yeoman-generator';
 import {get_dependencies, get_questions, Answers, Fields} from './definitions';
