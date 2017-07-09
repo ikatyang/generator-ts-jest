@@ -14,12 +14,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "jest --config ./jest.json",
-    "lint": "tslint -p ./tsconfig.json --type-check",
     "prepublish": "yarn run build",
+    "lint": "tslint -p ./tsconfig.json --type-check",
+    "test": "jest --config ./jest.json",
     "prebuild": "rm -rf ./<%= generated_directory %>",
     "build": "tsc -p tsconfig.build.json"
   },
+  "dependencies": {},
   "devDependencies": {},
   "engines": {
     "node": ">= <%= node_versions[0] %>"

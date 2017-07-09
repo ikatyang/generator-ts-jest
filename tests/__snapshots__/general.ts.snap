@@ -162,12 +162,13 @@ exports[`default package.json 1`] = `
   },
   \\"license\\": \\"MIT\\",
   \\"scripts\\": {
-    \\"test\\": \\"jest --config ./jest.json\\",
-    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
     \\"prepublish\\": \\"yarn run build\\",
+    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
+    \\"test\\": \\"jest --config ./jest.json\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
     \\"build\\": \\"tsc -p tsconfig.build.json\\"
   },
+  \\"dependencies\\": {},
   \\"devDependencies\\": {},
   \\"engines\\": {
     \\"node\\": \\">= 6\\"
@@ -262,12 +263,13 @@ exports[`node_version = 4 package.json 1`] = `
   },
   \\"license\\": \\"MIT\\",
   \\"scripts\\": {
-    \\"test\\": \\"jest --config ./jest.json\\",
-    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
     \\"prepublish\\": \\"yarn run build\\",
+    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
+    \\"test\\": \\"jest --config ./jest.json\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
     \\"build\\": \\"tsc -p tsconfig.build.json\\"
   },
+  \\"dependencies\\": {},
   \\"devDependencies\\": {},
   \\"engines\\": {
     \\"node\\": \\">= 4\\"
@@ -309,12 +311,13 @@ exports[`project_keywords = "" package.json 1`] = `
   },
   \\"license\\": \\"MIT\\",
   \\"scripts\\": {
-    \\"test\\": \\"jest --config ./jest.json\\",
-    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
     \\"prepublish\\": \\"yarn run build\\",
+    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
+    \\"test\\": \\"jest --config ./jest.json\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
     \\"build\\": \\"tsc -p tsconfig.build.json\\"
   },
+  \\"dependencies\\": {},
   \\"devDependencies\\": {},
   \\"engines\\": {
     \\"node\\": \\">= 6\\"
