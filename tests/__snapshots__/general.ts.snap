@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default .editorconfig 1`] = `
+"root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+"
+`;
+
+exports[`default .gitattributes 1`] = `
+"* text eol=lf
+"
+`;
+
+exports[`default .gitignore 1`] = `
+"coverage/
+lib/
+node_modules/
+"
+`;
+
+exports[`default .npmignore 1`] = `""`;
+
+exports[`default .travis.yml 1`] = `
+"language: node_js
+
+node_js:
+- \\"6\\"
+
+env:
+- JOB=test
+
+script:
+- if [ \\"$JOB\\" = \\"lint\\" ]; then yarn run lint; fi
+- if [ \\"$JOB\\" = \\"test\\" ]; then yarn run test -- --verbose; fi
+- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then yarn run test -- --verbose --coverage; fi
+
+after_success:
+- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then node_modules/.bin/codecov; fi
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+matrix:
+  fast_finish: true
+  include:
+  - node_js: \\"stable\\"
+    env: JOB=lint
+  - node_js: \\"stable\\"
+    env: JOB=test-coverage
+"
+`;
+
+exports[`default CHANGELOG.md 1`] = `
+"# Change Log
+
+All changes to this project will be documented in this file.
+
+> **Tags:**
+> - 💥 [Breaking Change]
+> - 🚀 [New Feature]
+> - 🐛 [Bug Fix]
+> - 📝 [Documentation]
+> - 🏠 [Internal]
+> - 💅 [Polish]
+
+## Unreleased
+
+#### 🚀 New Feature
+- Release first version
+"
+`;
+
+exports[`default README.md 1`] = `
+"# my-awesome-project
+
+[![npm](https://img.shields.io/npm/v/my-awesome-project.svg)](https://www.npmjs.com/package/my-awesome-project)
+[![build](https://img.shields.io/travis/ikatyang/my-awesome-project/master.svg)](https://travis-ci.org/ikatyang/my-awesome-project/builds)
+[![coverage](https://img.shields.io/codecov/c/github/ikatyang/my-awesome-project.svg)](https://codecov.io/gh/ikatyang/my-awesome-project)
+
+my awesome description
+
+[Changelog](https://github.com/ikatyang/my-awesome-project/blob/master/CHANGELOG.md)
+
+## Install
+
+\`\`\`sh
+# using npm
+npm install --save my-awesome-project
+
+# using yarn
+yarn add my-awesome-project
+\`\`\`
+
+## Usage
+
+\`\`\`ts
+// sample code
+\`\`\`
+
+## Development
+
+\`\`\`sh
+# lint
+yarn run lint
+
+# build
+yarn run build
+
+# test
+yarn run test
+\`\`\`
+
+## License
+
+MIT © [Ika](https://github.com/ikatyang)
+"
+`;
+
+exports[`default jest.json 1`] = `
+"{
+  \\"testEnvironment\\": \\"node\\",
+  \\"moduleFileExtensions\\": [\\"ts\\", \\"js\\", \\"json\\"],
+  \\"testMatch\\": [\\"**/{tests,__tests__}/**/*.ts\\"],
+  \\"transform\\": {\\"\\\\\\\\.ts$\\": \\"ts-jest/preprocessor\\"},
+  \\"mapCoverage\\": true,
+  \\"coverageReporters\\": [\\"lcov\\", \\"text-summary\\"],
+  \\"collectCoverageFrom\\": [\\"src/**/*.ts\\"],
+  \\"coverageThreshold\\": {
+    \\"global\\": {
+      \\"branches\\": 100,
+      \\"functions\\": 100,
+      \\"lines\\": 100,
+      \\"statements\\": 100
+    }
+  }
+}
+"
+`;
+
+exports[`default package.json 1`] = `
+"{
+  \\"name\\": \\"my-awesome-project\\",
+  \\"version\\": \\"0.0.0-dev\\",
+  \\"description\\": \\"my awesome description\\",
+  \\"keywords\\": [
+    \\"awesome\\",
+    \\"keywords\\",
+    \\"my\\"
+  ],
+  \\"main\\": \\"lib/index.js\\",
+  \\"types\\": \\"lib/index.d.ts\\",
+  \\"repository\\": \\"https://github.com/ikatyang/my-awesome-project\\",
+  \\"homepage\\": \\"https://github.com/ikatyang/my-awesome-project#readme\\",
+  \\"author\\": {
+    \\"name\\": \\"Ika\\",
+    \\"email\\": \\"ikatyang@gmail.com\\",
+    \\"url\\": \\"https://github.com/ikatyang\\"
+  },
+  \\"license\\": \\"MIT\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest --config ./jest.json\\",
+    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
+    \\"prepublish\\": \\"yarn run build\\",
+    \\"prebuild\\": \\"rm -rf ./lib\\",
+    \\"build\\": \\"tsc -p tsconfig.build.json\\"
+  },
+  \\"devDependencies\\": {},
+  \\"engines\\": {
+    \\"node\\": \\">= 6\\"
+  },
+  \\"files\\": [
+    \\"/lib/**/*\\"
+  ]
+}
+"
+`;
+
+exports[`default src/index.ts 1`] = `""`;
+
+exports[`default tsconfig.build.json 1`] = `
+"{
+  \\"extends\\": \\"./tsconfig.json\\",
+  \\"include\\": [\\"src/index.ts\\"],
+  \\"compilerOptions\\": {
+    \\"rootDir\\": \\"src\\",
+    \\"outDir\\": \\"lib\\"
+  }
+}
+"
+`;
+
+exports[`default tsconfig.json 1`] = `
+"{
+  \\"compilerOptions\\": {
+    \\"strict\\": true,
+    \\"target\\": \\"es6\\",
+    \\"module\\": \\"commonjs\\",
+    \\"declaration\\": true
+  },
+  \\"include\\": [\\"src/**/*.ts\\"]
+}
+"
+`;
+
+exports[`default tslint.json 1`] = `
+"{
+  \\"extends\\": \\"tslint-config-ikatyang\\"
+}
+"
+`;
+
+exports[`node_version = 4 package.json 1`] = `
+"{
+  \\"name\\": \\"my-awesome-project\\",
+  \\"version\\": \\"0.0.0-dev\\",
+  \\"description\\": \\"my awesome description\\",
+  \\"keywords\\": [
+    \\"awesome\\",
+    \\"keywords\\",
+    \\"my\\"
+  ],
+  \\"main\\": \\"lib/index.js\\",
+  \\"types\\": \\"lib/index.d.ts\\",
+  \\"repository\\": \\"https://github.com/ikatyang/my-awesome-project\\",
+  \\"homepage\\": \\"https://github.com/ikatyang/my-awesome-project#readme\\",
+  \\"author\\": {
+    \\"name\\": \\"Ika\\",
+    \\"email\\": \\"ikatyang@gmail.com\\",
+    \\"url\\": \\"https://github.com/ikatyang\\"
+  },
+  \\"license\\": \\"MIT\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest --config ./jest.json\\",
+    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
+    \\"prepublish\\": \\"yarn run build\\",
+    \\"prebuild\\": \\"rm -rf ./lib\\",
+    \\"build\\": \\"tsc -p tsconfig.build.json\\"
+  },
+  \\"devDependencies\\": {},
+  \\"engines\\": {
+    \\"node\\": \\">= 4\\"
+  },
+  \\"files\\": [
+    \\"/lib/**/*\\"
+  ]
+}
+"
+`;
+
+exports[`node_version = 4 tsconfig.json 1`] = `
+"{
+  \\"compilerOptions\\": {
+    \\"strict\\": true,
+    \\"target\\": \\"es5\\",
+    \\"module\\": \\"commonjs\\",
+    \\"declaration\\": true
+  },
+  \\"include\\": [\\"src/**/*.ts\\"]
+}
+"
+`;
+
+exports[`project_keywords = "" package.json 1`] = `
+"{
+  \\"name\\": \\"my-awesome-project\\",
+  \\"version\\": \\"0.0.0-dev\\",
+  \\"description\\": \\"my awesome description\\",
+  \\"keywords\\": [],
+  \\"main\\": \\"lib/index.js\\",
+  \\"types\\": \\"lib/index.d.ts\\",
+  \\"repository\\": \\"https://github.com/ikatyang/my-awesome-project\\",
+  \\"homepage\\": \\"https://github.com/ikatyang/my-awesome-project#readme\\",
+  \\"author\\": {
+    \\"name\\": \\"Ika\\",
+    \\"email\\": \\"ikatyang@gmail.com\\",
+    \\"url\\": \\"https://github.com/ikatyang\\"
+  },
+  \\"license\\": \\"MIT\\",
+  \\"scripts\\": {
+    \\"test\\": \\"jest --config ./jest.json\\",
+    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
+    \\"prepublish\\": \\"yarn run build\\",
+    \\"prebuild\\": \\"rm -rf ./lib\\",
+    \\"build\\": \\"tsc -p tsconfig.build.json\\"
+  },
+  \\"devDependencies\\": {},
+  \\"engines\\": {
+    \\"node\\": \\">= 6\\"
+  },
+  \\"files\\": [
+    \\"/lib/**/*\\"
+  ]
+}
+"
+`;

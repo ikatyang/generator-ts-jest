@@ -47,6 +47,8 @@ class TSJestGenerator extends Generator {
 
   public install() {
     const dependencies = get_dependencies(this.fields);
+
+    // istanbul ignore next
     if (this.fields.use_yarn) {
       this.yarnInstall(dependencies, {
         dev: true,

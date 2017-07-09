@@ -19,17 +19,22 @@
     "prepublish": "yarn run link && yarn run build",
     "prebuild": "rm -rf ./app",
     "build": "tsc -p tsconfig.build.json",
-    "postbuild": "cp -r ./src/templates ./app"
+    "postbuild": "cp -r ./src/templates ./app",
+    "test": "jest --config ./jest.json"
   },
   "dependencies": {
     "dashify": "^0.2.2",
     "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {
+    "@types/jest": "20.0.2",
     "@types/yeoman-generator": "1.0.2",
+    "jest": "20.0.4",
+    "ts-jest": "20.0.7",
     "tslint": "5.3.2",
     "tslint-config-ikatyang": "0.6.0",
-    "typescript": "2.3.3"
+    "typescript": "2.3.3",
+    "yeoman-test": "1.6.0"
   },
   "engines": {
     "node": ">= 6"
