@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-<%- node_versions.map(version => `- ${JSON.stringify(version)}`).join('\n') %>
+<%- node_versions.map(version => `- ${version}`).join('\n') %>
 
 env:
 - JOB=test

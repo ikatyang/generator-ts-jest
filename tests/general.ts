@@ -79,6 +79,9 @@ describe('project_keywords = ""', () => {
 describe('node_version = 4', () => {
   beforeAll(before_all({...default_answers, node_version: '4'}));
   afterAll(after_all());
+  test('.travis.yml', () => {
+    assert_file_content('.travis.yml');
+  });
   test('package.json', () => {
     assert_file_content('package.json');
   });

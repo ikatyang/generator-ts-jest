@@ -31,8 +31,8 @@ exports[`default .travis.yml 1`] = `
 "language: node_js
 
 node_js:
-- \\"6\\"
-- \\"8\\"
+- 6
+- 8
 
 env:
 - JOB=test
@@ -216,6 +216,40 @@ exports[`default tslint.json 1`] = `
 "{
   \\"extends\\": \\"tslint-config-ikatyang\\"
 }
+"
+`;
+
+exports[`node_version = 4 .travis.yml 1`] = `
+"language: node_js
+
+node_js:
+- 4
+- 6
+- 8
+
+env:
+- JOB=test
+
+script:
+- if [ \\"$JOB\\" = \\"lint\\" ]; then yarn run lint; fi
+- if [ \\"$JOB\\" = \\"test\\" ]; then yarn run test -- --verbose; fi
+- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then yarn run test -- --verbose --coverage; fi
+
+after_success:
+- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then node_modules/.bin/codecov; fi
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+matrix:
+  fast_finish: true
+  include:
+  - node_js: \\"stable\\"
+    env: JOB=lint
+  - node_js: \\"stable\\"
+    env: JOB=test-coverage
 "
 `;
 
