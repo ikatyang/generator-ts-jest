@@ -11,7 +11,9 @@ class TSJestGenerator extends Generator {
   // tslint:disable-next-line:promise-function-async
   public prompting() {
     return this.prompt(get_questions(this.appname)).then((answers: Answers) => {
-      const keywords_text = (answers.project_keywords as string).trim();
+      const keywords_text = (typeof answers.project_keywords === 'string')
+        ? answers.project_keywords.trim()
+        : '';
       this.fields = {
         ...answers,
         project_keywords: (keywords_text.length === 0)
@@ -26,17 +28,18 @@ class TSJestGenerator extends Generator {
   }
 
   public writing() {
-    fs.readdirSync(`${__dirname}/templates`)
+    const template_dirname = `${__dirname}/templates`;
+    fs.readdirSync(template_dirname)
       .filter(filename => (filename !== 'src'))
       .forEach(filename => {
         this.fs.copyTpl(
-          this.templatePath(filename),
+          this.templatePath(`${template_dirname}/${filename}`),
           this.destinationPath(filename.replace(/^-/, '.')),
           this.fields,
         );
       });
     this.fs.copyTpl(
-      this.templatePath('src/index.ts'),
+      this.templatePath(`${template_dirname}/src/index.ts`),
       this.destinationPath(`${this.fields.source_directory}/index.ts`),
       this.fields,
     );
