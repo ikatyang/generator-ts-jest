@@ -5,8 +5,11 @@ export function get_tsconfig_target(node_version: string) {
     case '4':
       return 'es5';
     case '6':
-    default:
+    case '8':
       return 'es6';
+    // istanbul ignore next
+    default:
+      throw new Error(`Invalid node_version '${node_version}'`);
   }
 }
 
@@ -17,9 +20,13 @@ export function get_node_versions(node_version: string) {
     case '4':
       targets.push('4');
     case '6':
-    default:
       targets.push('6');
+    case '8':
+      targets.push('8');
       break;
+    // istanbul ignore next
+    default:
+      throw new Error(`Invalid node_version '${node_version}'`);
   }
   // tslint:enable:no-switch-case-fall-through
   return targets;

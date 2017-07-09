@@ -32,6 +32,7 @@ exports[`default .travis.yml 1`] = `
 
 node_js:
 - \\"6\\"
+- \\"8\\"
 
 env:
 - JOB=test
