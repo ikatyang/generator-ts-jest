@@ -85,7 +85,7 @@ exports[`default README.md 1`] = `
 
 [![npm](https://img.shields.io/npm/v/my-awesome-project.svg)](https://www.npmjs.com/package/my-awesome-project)
 [![build](https://img.shields.io/travis/ikatyang/my-awesome-project/master.svg)](https://travis-ci.org/ikatyang/my-awesome-project/builds)
-[![coverage](https://img.shields.io/codecov/c/github/ikatyang/my-awesome-project.svg)](https://codecov.io/gh/ikatyang/my-awesome-project)
+[![coverage](https://img.shields.io/codecov/c/github/ikatyang/my-awesome-project/master.svg)](https://codecov.io/gh/ikatyang/my-awesome-project)
 
 my awesome description
 

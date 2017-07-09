@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/<%= project_name %>.svg)](https://www.npmjs.com/package/<%= project_name %>)
 [![build](https://img.shields.io/travis/<%= github_username %>/<%= project_name %>/master.svg)](https://travis-ci.org/<%= github_username %>/<%= project_name %>/builds)
-[![coverage](https://img.shields.io/codecov/c/github/<%= github_username %>/<%= project_name %>.svg)](https://codecov.io/gh/<%= github_username %>/<%= project_name %>)
+[![coverage](https://img.shields.io/codecov/c/github/<%= github_username %>/<%= project_name %>/master.svg)](https://codecov.io/gh/<%= github_username %>/<%= project_name %>)
 
 <%- project_description %>
 
