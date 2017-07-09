@@ -1,4 +1,4 @@
-// Type definitions for yeoman-test 1.6.0
+// Type definitions for yeoman-test 1.7.0
 // Project: https://github.com/yeoman/yeoman-test
 // Definitions by: Ika <https://github.com/ikatyang>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
