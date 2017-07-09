@@ -1,4 +1,4 @@
-import * as dashify from 'dashify';
+import dashify = require('lodash.kebabcase'); // tslint:disable-line:no-require-imports
 import {get_git_info} from './utils';
 
 export interface Answers {
@@ -12,8 +12,8 @@ export interface Answers {
   node_version: string;
   source_directory: string;
   generated_directory: string;
-  use_yarn: boolean;
   use_exact_version: boolean;
+  enable_codecov: boolean;
 }
 
 export type Fields = Answers & {
@@ -26,7 +26,6 @@ export type Fields = Answers & {
 
 export const get_dependencies = (fields: Fields) => [
   '@types/jest',
-  'codecov',
   'jest',
   'ts-jest',
   'tslint',
@@ -83,6 +82,7 @@ export const get_questions = (appname: string) => [
     choices: [
       '4',
       '6',
+      '8',
     ],
   },
   {
@@ -99,14 +99,14 @@ export const get_questions = (appname: string) => [
   },
   {
     type: 'confirm',
-    name: 'use_yarn',
-    message: 'Use Yarn',
+    name: 'use_exact_version',
+    message: 'Use exact version',
     default: true,
   },
   {
     type: 'confirm',
-    name: 'use_exact_version',
-    message: 'Use exact version',
+    name: 'enable_codecov',
+    message: 'Enable codecov',
     default: true,
   },
 ];

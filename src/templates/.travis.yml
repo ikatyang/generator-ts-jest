@@ -1,19 +1,18 @@
 language: node_js
 
 node_js:
-<%- node_versions.map(version => `- ${JSON.stringify(version)}`).join('\n') %>
-
-env:
-- JOB=test
-
+<%- node_versions.map(version => `- ${version}`).join('\n') %>
+<%- write_if_present(
+  enable_codecov,
+  `\nbefore_install:\n- yarn global add codecov\n`
+) %>
 script:
-- if [ "$JOB" = "lint" ]; then yarn run lint; fi
-- if [ "$JOB" = "test" ]; then yarn run test -- --verbose; fi
-- if [ "$JOB" = "test-coverage" ]; then yarn run test -- --verbose --coverage; fi
-
-after_success:
-- if [ "$JOB" = "test-coverage" ]; then node_modules/.bin/codecov; fi
-
+- yarn run lint
+- yarn run test -- --coverage --verbose
+<%- write_if_present(
+  enable_codecov,
+  `\nafter_script:\n- codecov\n`
+) %>
 cache:
   yarn: true
   directories:
@@ -21,8 +20,3 @@ cache:
 
 matrix:
   fast_finish: true
-  include:
-  - node_js: "stable"
-    env: JOB=lint
-  - node_js: "stable"
-    env: JOB=test-coverage

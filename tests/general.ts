@@ -19,8 +19,8 @@ const default_answers: Answers = {
   node_version: '6',
   source_directory: 'src',
   generated_directory: 'lib',
-  use_yarn: true,
   use_exact_version: true,
+  enable_codecov: true,
 };
 
 describe('default', () => {
@@ -79,11 +79,24 @@ describe('project_keywords = ""', () => {
 describe('node_version = 4', () => {
   beforeAll(before_all({...default_answers, node_version: '4'}));
   afterAll(after_all());
+  test('.travis.yml', () => {
+    assert_file_content('.travis.yml');
+  });
   test('package.json', () => {
     assert_file_content('package.json');
   });
   test('tsconfig.json', () => {
     assert_file_content('tsconfig.json');
+  });
+});
+describe('enable_codecov = false', () => {
+  beforeAll(before_all({...default_answers, enable_codecov: false}));
+  afterAll(after_all());
+  test('.travis.yml', () => {
+    assert_file_content('.travis.yml');
+  });
+  test('README.md', () => {
+    assert_file_content('README.md');
   });
 });
 

@@ -14,6 +14,7 @@ trim_trailing_whitespace = true
 
 exports[`default .gitattributes 1`] = `
 "* text eol=lf
+*.png binary
 "
 `;
 
@@ -30,18 +31,18 @@ exports[`default .travis.yml 1`] = `
 "language: node_js
 
 node_js:
-- \\"6\\"
+- 6
+- 8
 
-env:
-- JOB=test
+before_install:
+- yarn global add codecov
 
 script:
-- if [ \\"$JOB\\" = \\"lint\\" ]; then yarn run lint; fi
-- if [ \\"$JOB\\" = \\"test\\" ]; then yarn run test -- --verbose; fi
-- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then yarn run test -- --verbose --coverage; fi
+- yarn run lint
+- yarn run test -- --coverage --verbose
 
-after_success:
-- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then node_modules/.bin/codecov; fi
+after_script:
+- codecov
 
 cache:
   yarn: true
@@ -50,11 +51,6 @@ cache:
 
 matrix:
   fast_finish: true
-  include:
-  - node_js: \\"stable\\"
-    env: JOB=lint
-  - node_js: \\"stable\\"
-    env: JOB=test-coverage
 "
 `;
 
@@ -83,7 +79,7 @@ exports[`default README.md 1`] = `
 
 [![npm](https://img.shields.io/npm/v/my-awesome-project.svg)](https://www.npmjs.com/package/my-awesome-project)
 [![build](https://img.shields.io/travis/ikatyang/my-awesome-project/master.svg)](https://travis-ci.org/ikatyang/my-awesome-project/builds)
-[![coverage](https://img.shields.io/codecov/c/github/ikatyang/my-awesome-project.svg)](https://codecov.io/gh/ikatyang/my-awesome-project)
+[![coverage](https://img.shields.io/codecov/c/github/ikatyang/my-awesome-project/master.svg)](https://codecov.io/gh/ikatyang/my-awesome-project)
 
 my awesome description
 
@@ -166,12 +162,13 @@ exports[`default package.json 1`] = `
   },
   \\"license\\": \\"MIT\\",
   \\"scripts\\": {
-    \\"test\\": \\"jest --config ./jest.json\\",
-    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
     \\"prepublish\\": \\"yarn run build\\",
+    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
+    \\"test\\": \\"jest --config ./jest.json\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
     \\"build\\": \\"tsc -p tsconfig.build.json\\"
   },
+  \\"dependencies\\": {},
   \\"devDependencies\\": {},
   \\"engines\\": {
     \\"node\\": \\">= 6\\"
@@ -217,6 +214,100 @@ exports[`default tslint.json 1`] = `
 "
 `;
 
+exports[`enable_codecov = false .travis.yml 1`] = `
+"language: node_js
+
+node_js:
+- 6
+- 8
+
+script:
+- yarn run lint
+- yarn run test -- --coverage --verbose
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+matrix:
+  fast_finish: true
+"
+`;
+
+exports[`enable_codecov = false README.md 1`] = `
+"# my-awesome-project
+
+[![npm](https://img.shields.io/npm/v/my-awesome-project.svg)](https://www.npmjs.com/package/my-awesome-project)
+[![build](https://img.shields.io/travis/ikatyang/my-awesome-project/master.svg)](https://travis-ci.org/ikatyang/my-awesome-project/builds)
+
+my awesome description
+
+[Changelog](https://github.com/ikatyang/my-awesome-project/blob/master/CHANGELOG.md)
+
+## Install
+
+\`\`\`sh
+# using npm
+npm install --save my-awesome-project
+
+# using yarn
+yarn add my-awesome-project
+\`\`\`
+
+## Usage
+
+\`\`\`ts
+// sample code
+\`\`\`
+
+## Development
+
+\`\`\`sh
+# lint
+yarn run lint
+
+# build
+yarn run build
+
+# test
+yarn run test
+\`\`\`
+
+## License
+
+MIT © [Ika](https://github.com/ikatyang)
+"
+`;
+
+exports[`node_version = 4 .travis.yml 1`] = `
+"language: node_js
+
+node_js:
+- 4
+- 6
+- 8
+
+before_install:
+- yarn global add codecov
+
+script:
+- yarn run lint
+- yarn run test -- --coverage --verbose
+
+after_script:
+- codecov
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+matrix:
+  fast_finish: true
+"
+`;
+
 exports[`node_version = 4 package.json 1`] = `
 "{
   \\"name\\": \\"my-awesome-project\\",
@@ -238,12 +329,13 @@ exports[`node_version = 4 package.json 1`] = `
   },
   \\"license\\": \\"MIT\\",
   \\"scripts\\": {
-    \\"test\\": \\"jest --config ./jest.json\\",
-    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
     \\"prepublish\\": \\"yarn run build\\",
+    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
+    \\"test\\": \\"jest --config ./jest.json\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
     \\"build\\": \\"tsc -p tsconfig.build.json\\"
   },
+  \\"dependencies\\": {},
   \\"devDependencies\\": {},
   \\"engines\\": {
     \\"node\\": \\">= 4\\"
@@ -285,12 +377,13 @@ exports[`project_keywords = "" package.json 1`] = `
   },
   \\"license\\": \\"MIT\\",
   \\"scripts\\": {
-    \\"test\\": \\"jest --config ./jest.json\\",
-    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
     \\"prepublish\\": \\"yarn run build\\",
+    \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
+    \\"test\\": \\"jest --config ./jest.json\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
     \\"build\\": \\"tsc -p tsconfig.build.json\\"
   },
+  \\"dependencies\\": {},
   \\"devDependencies\\": {},
   \\"engines\\": {
     \\"node\\": \\">= 6\\"

@@ -23,12 +23,13 @@
     "test": "jest --config ./jest.json"
   },
   "dependencies": {
-    "dashify": "^0.2.2",
+    "@types/lodash.kebabcase": "^4.1.2",
+    "@types/yeoman-generator": "^1.0.2",
+    "lodash.kebabcase": "^4.1.1",
     "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {
     "@types/jest": "20.0.2",
-    "@types/yeoman-generator": "1.0.2",
     "jest": "20.0.4",
     "ts-jest": "20.0.7",
     "tslint": "5.5.0",
