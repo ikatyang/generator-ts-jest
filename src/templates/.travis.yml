@@ -3,10 +3,19 @@ language: node_js
 node_js:
 <%- node_versions.map(version => `- ${version}`).join('\n') %>
 <%- write_if_present(
-  enable_codecov,
+  enable_codecov || enable_greenkeeper,
   '\n' + dedent(`
     before_install:
-    - yarn global add codecov
+    ${[
+      ...enable_codecov ? ['yarn global add codecov'] : [],
+      ...enable_greenkeeper ? ['yarn global add greenkeeper-lockfile@1'] : [],
+    ].map(x => `- ${x}`).join('\n')}
+  `) + '\n'
+) + write_if_present(
+  enable_greenkeeper,
+  '\n' + dedent(`
+    before_script:
+    - greenkeeper-lockfile-update
   `) + '\n'
 ) %>
 script:
@@ -16,7 +25,10 @@ script:
   enable_codecov,
   '\n' + dedent(`
     after_script:
-    - codecov
+    ${[
+      ...enable_codecov ? ['codecov'] : [],
+      ...enable_greenkeeper ? ['greenkeeper-lockfile-upload'] : [],
+    ].map(x => `- ${x}`).join('\n')}
   `) + '\n'
 ) %>
 cache:

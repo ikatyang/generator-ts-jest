@@ -21,6 +21,7 @@ const default_answers: Answers = {
   generated_directory: 'lib',
   use_exact_version: true,
   enable_codecov: true,
+  enable_greenkeeper: true,
 };
 
 describe('default', () => {
@@ -91,6 +92,16 @@ describe('node_version = 4', () => {
 });
 describe('enable_codecov = false', () => {
   beforeAll(before_all({...default_answers, enable_codecov: false}));
+  afterAll(after_all());
+  test('.travis.yml', () => {
+    assert_file_content('.travis.yml');
+  });
+  test('README.md', () => {
+    assert_file_content('README.md');
+  });
+});
+describe('enable_greenkeeper = false', () => {
+  beforeAll(before_all({...default_answers, enable_greenkeeper: false}));
   afterAll(after_all());
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');

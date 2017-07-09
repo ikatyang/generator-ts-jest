@@ -5,6 +5,9 @@
 <%- write_if_present(
   enable_codecov,
   `[![coverage](https://img.shields.io/codecov/c/github/${github_username}/${project_name}/master.svg)](https://codecov.io/gh/${github_username}/${project_name})\n`
+) + write_if_present(
+  enable_greenkeeper,
+  `[![greenkeeper](https://badges.greenkeeper.io/${github_username}/${project_name}.svg)](https://greenkeeper.io/)\n`
 ) %>
 <%- project_description %>
 

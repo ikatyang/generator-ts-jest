@@ -36,6 +36,10 @@ node_js:
 
 before_install:
 - yarn global add codecov
+- yarn global add greenkeeper-lockfile@1
+
+before_script:
+- greenkeeper-lockfile-update
 
 script:
 - yarn run lint
@@ -43,6 +47,7 @@ script:
 
 after_script:
 - codecov
+- greenkeeper-lockfile-upload
 
 cache:
   yarn: true
@@ -80,6 +85,7 @@ exports[`default README.md 1`] = `
 [![npm](https://img.shields.io/npm/v/my-awesome-project.svg)](https://www.npmjs.com/package/my-awesome-project)
 [![build](https://img.shields.io/travis/ikatyang/my-awesome-project/master.svg)](https://travis-ci.org/ikatyang/my-awesome-project/builds)
 [![coverage](https://img.shields.io/codecov/c/github/ikatyang/my-awesome-project/master.svg)](https://codecov.io/gh/ikatyang/my-awesome-project)
+[![greenkeeper](https://badges.greenkeeper.io/ikatyang/my-awesome-project.svg)](https://greenkeeper.io/)
 
 my awesome description
 
@@ -221,6 +227,12 @@ node_js:
 - 6
 - stable
 
+before_install:
+- yarn global add greenkeeper-lockfile@1
+
+before_script:
+- greenkeeper-lockfile-update
+
 script:
 - yarn run lint
 - yarn run test -- --coverage --verbose
@@ -240,6 +252,80 @@ exports[`enable_codecov = false README.md 1`] = `
 
 [![npm](https://img.shields.io/npm/v/my-awesome-project.svg)](https://www.npmjs.com/package/my-awesome-project)
 [![build](https://img.shields.io/travis/ikatyang/my-awesome-project/master.svg)](https://travis-ci.org/ikatyang/my-awesome-project/builds)
+[![greenkeeper](https://badges.greenkeeper.io/ikatyang/my-awesome-project.svg)](https://greenkeeper.io/)
+
+my awesome description
+
+[Changelog](https://github.com/ikatyang/my-awesome-project/blob/master/CHANGELOG.md)
+
+## Install
+
+\`\`\`sh
+# using npm
+npm install --save my-awesome-project
+
+# using yarn
+yarn add my-awesome-project
+\`\`\`
+
+## Usage
+
+\`\`\`ts
+// sample code
+\`\`\`
+
+## Development
+
+\`\`\`sh
+# lint
+yarn run lint
+
+# build
+yarn run build
+
+# test
+yarn run test
+\`\`\`
+
+## License
+
+MIT © [Ika](https://github.com/ikatyang)
+"
+`;
+
+exports[`enable_greenkeeper = false .travis.yml 1`] = `
+"language: node_js
+
+node_js:
+- 6
+- stable
+
+before_install:
+- yarn global add codecov
+
+script:
+- yarn run lint
+- yarn run test -- --coverage --verbose
+
+after_script:
+- codecov
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+matrix:
+  fast_finish: true
+"
+`;
+
+exports[`enable_greenkeeper = false README.md 1`] = `
+"# my-awesome-project
+
+[![npm](https://img.shields.io/npm/v/my-awesome-project.svg)](https://www.npmjs.com/package/my-awesome-project)
+[![build](https://img.shields.io/travis/ikatyang/my-awesome-project/master.svg)](https://travis-ci.org/ikatyang/my-awesome-project/builds)
+[![coverage](https://img.shields.io/codecov/c/github/ikatyang/my-awesome-project/master.svg)](https://codecov.io/gh/ikatyang/my-awesome-project)
 
 my awesome description
 
@@ -290,6 +376,10 @@ node_js:
 
 before_install:
 - yarn global add codecov
+- yarn global add greenkeeper-lockfile@1
+
+before_script:
+- greenkeeper-lockfile-update
 
 script:
 - yarn run lint
@@ -297,6 +387,7 @@ script:
 
 after_script:
 - codecov
+- greenkeeper-lockfile-upload
 
 cache:
   yarn: true

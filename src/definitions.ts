@@ -14,6 +14,7 @@ export interface Answers {
   generated_directory: string;
   use_exact_version: boolean;
   enable_codecov: boolean;
+  enable_greenkeeper: boolean;
 }
 
 export type Fields = Answers & {
@@ -107,6 +108,12 @@ export const get_questions = (appname: string) => [
     type: 'confirm',
     name: 'enable_codecov',
     message: 'Enable codecov',
+    default: true,
+  },
+  {
+    type: 'confirm',
+    name: 'enable_greenkeeper',
+    message: 'Enable greenkeeper',
     default: true,
   },
 ];
