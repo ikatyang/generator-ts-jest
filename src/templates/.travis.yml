@@ -4,14 +4,20 @@ node_js:
 <%- node_versions.map(version => `- ${version}`).join('\n') %>
 <%- write_if_present(
   enable_codecov,
-  `\nbefore_install:\n- yarn global add codecov\n`
+  '\n' + dedent(`
+    before_install:
+    - yarn global add codecov
+  `) + '\n'
 ) %>
 script:
 - yarn run lint
 - yarn run test -- --coverage --verbose
 <%- write_if_present(
   enable_codecov,
-  `\nafter_script:\n- codecov\n`
+  '\n' + dedent(`
+    after_script:
+    - codecov
+  `) + '\n'
 ) %>
 cache:
   yarn: true

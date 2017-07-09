@@ -1,10 +1,13 @@
-import dashify = require('lodash.kebabcase'); // tslint:disable-line:no-require-imports
 import * as fs from 'fs';
 import * as Generator from 'yeoman-generator';
 import {get_dependencies, get_questions, Answers, Fields} from './definitions';
 import {get_node_versions, get_tsconfig_target} from './utils';
 
+import dedent = require('dedent'); // tslint:disable-line:no-require-imports
+import dashify = require('lodash.kebabcase'); // tslint:disable-line:no-require-imports
+
 const helpers = {
+  dedent,
   write_if_present: (write: boolean, content: string) => write ? content : '',
 };
 
