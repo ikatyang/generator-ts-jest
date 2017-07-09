@@ -1,5 +1,7 @@
 # generator-ts-jest
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ikatyang/generator-ts-jest.svg)](https://greenkeeper.io/)
+
 [![npm](https://img.shields.io/npm/v/generator-ts-jest.svg)](https://www.npmjs.com/package/generator-ts-jest)
 [![build](https://img.shields.io/travis/ikatyang/generator-ts-jest/master.svg)](https://travis-ci.org/ikatyang/generator-ts-jest/builds)
 [![coverage](https://img.shields.io/codecov/c/github/ikatyang/generator-ts-jest/master.svg)](https://codecov.io/gh/ikatyang/generator-ts-jest)
