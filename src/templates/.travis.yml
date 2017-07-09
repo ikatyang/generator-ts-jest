@@ -6,16 +6,12 @@ node_js:
 before_install:
 - yarn global add codecov
 
-env:
-- JOB=test
-
 script:
-- if [ "$JOB" = "lint" ]; then yarn run lint; fi
-- if [ "$JOB" = "test" ]; then yarn run test -- --verbose; fi
-- if [ "$JOB" = "test-coverage" ]; then yarn run test -- --verbose --coverage; fi
+- yarn run lint
+- yarn run test -- --coverage --verbose
 
 after_script:
-- if [ "$JOB" = "test-coverage" ]; then codecov; fi
+- codecov
 
 cache:
   yarn: true
@@ -24,8 +20,3 @@ cache:
 
 matrix:
   fast_finish: true
-  include:
-  - node_js: "stable"
-    env: JOB=lint
-  - node_js: "stable"
-    env: JOB=test-coverage
