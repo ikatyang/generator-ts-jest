@@ -19,6 +19,7 @@ export function get_node_versions(node_version: string) {
     case '6':
     default:
       targets.push('6');
+      break;
   }
   // tslint:enable:no-switch-case-fall-through
   return targets;
