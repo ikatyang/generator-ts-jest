@@ -5,7 +5,7 @@ export function get_tsconfig_target(node_version: string) {
     case '4':
       return 'es5';
     case '6':
-    case '8':
+    case 'stable':
       return 'es6';
     // istanbul ignore next
     default:
@@ -21,8 +21,8 @@ export function get_node_versions(node_version: string) {
       targets.push('4');
     case '6':
       targets.push('6');
-    case '8':
-      targets.push('8');
+    case 'stable':
+      targets.push('stable');
       break;
     // istanbul ignore next
     default:

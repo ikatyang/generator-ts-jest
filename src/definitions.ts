@@ -82,7 +82,7 @@ export const get_questions = (appname: string) => [
     choices: [
       '4',
       '6',
-      '8',
+      'stable',
     ],
   },
   {

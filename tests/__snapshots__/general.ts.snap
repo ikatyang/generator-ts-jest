@@ -32,7 +32,7 @@ exports[`default .travis.yml 1`] = `
 
 node_js:
 - 6
-- 8
+- stable
 
 before_install:
 - yarn global add codecov
@@ -219,7 +219,7 @@ exports[`enable_codecov = false .travis.yml 1`] = `
 
 node_js:
 - 6
-- 8
+- stable
 
 script:
 - yarn run lint
@@ -286,7 +286,7 @@ exports[`node_version = 4 .travis.yml 1`] = `
 node_js:
 - 4
 - 6
-- 8
+- stable
 
 before_install:
 - yarn global add codecov
