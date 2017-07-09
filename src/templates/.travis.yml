@@ -2,17 +2,17 @@ language: node_js
 
 node_js:
 <%- node_versions.map(version => `- ${version}`).join('\n') %>
-
-before_install:
-- yarn global add codecov
-
+<%- write_if_present(
+  enable_codecov,
+  `\nbefore_install:\n- yarn global add codecov\n`
+) %>
 script:
 - yarn run lint
 - yarn run test -- --coverage --verbose
-
-after_script:
-- codecov
-
+<%- write_if_present(
+  enable_codecov,
+  `\nafter_script:\n- codecov\n`
+) %>
 cache:
   yarn: true
   directories:

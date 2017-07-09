@@ -214,6 +214,72 @@ exports[`default tslint.json 1`] = `
 "
 `;
 
+exports[`enable_codecov = false .travis.yml 1`] = `
+"language: node_js
+
+node_js:
+- 6
+- 8
+
+script:
+- yarn run lint
+- yarn run test -- --coverage --verbose
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+matrix:
+  fast_finish: true
+"
+`;
+
+exports[`enable_codecov = false README.md 1`] = `
+"# my-awesome-project
+
+[![npm](https://img.shields.io/npm/v/my-awesome-project.svg)](https://www.npmjs.com/package/my-awesome-project)
+[![build](https://img.shields.io/travis/ikatyang/my-awesome-project/master.svg)](https://travis-ci.org/ikatyang/my-awesome-project/builds)
+
+my awesome description
+
+[Changelog](https://github.com/ikatyang/my-awesome-project/blob/master/CHANGELOG.md)
+
+## Install
+
+\`\`\`sh
+# using npm
+npm install --save my-awesome-project
+
+# using yarn
+yarn add my-awesome-project
+\`\`\`
+
+## Usage
+
+\`\`\`ts
+// sample code
+\`\`\`
+
+## Development
+
+\`\`\`sh
+# lint
+yarn run lint
+
+# build
+yarn run build
+
+# test
+yarn run test
+\`\`\`
+
+## License
+
+MIT © [Ika](https://github.com/ikatyang)
+"
+`;
+
 exports[`node_version = 4 .travis.yml 1`] = `
 "language: node_js
 

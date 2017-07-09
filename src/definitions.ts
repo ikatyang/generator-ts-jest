@@ -13,6 +13,7 @@ export interface Answers {
   source_directory: string;
   generated_directory: string;
   use_exact_version: boolean;
+  enable_codecov: boolean;
 }
 
 export type Fields = Answers & {
@@ -100,6 +101,12 @@ export const get_questions = (appname: string) => [
     type: 'confirm',
     name: 'use_exact_version',
     message: 'Use exact version',
+    default: true,
+  },
+  {
+    type: 'confirm',
+    name: 'enable_codecov',
+    message: 'Enable codecov',
     default: true,
   },
 ];

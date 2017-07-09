@@ -4,6 +4,10 @@ import * as Generator from 'yeoman-generator';
 import {get_dependencies, get_questions, Answers, Fields} from './definitions';
 import {get_node_versions, get_tsconfig_target} from './utils';
 
+const helpers = {
+  write_if_present: (write: boolean, content: string) => write ? content : '',
+};
+
 class TSJestGenerator extends Generator {
 
   public fields: Fields;
@@ -29,19 +33,23 @@ class TSJestGenerator extends Generator {
 
   public writing() {
     const template_dirname = `${__dirname}/templates`;
+    const template_options = {
+      ...helpers,
+      ...this.fields,
+    };
     fs.readdirSync(template_dirname)
       .filter(filename => (filename !== 'src'))
       .forEach(filename => {
         this.fs.copyTpl(
           this.templatePath(`${template_dirname}/${filename}`),
           this.destinationPath(filename.replace(/^-/, '.')),
-          this.fields,
+          template_options,
         );
       });
     this.fs.copyTpl(
       this.templatePath(`${template_dirname}/src/index.ts`),
       this.destinationPath(`${this.fields.source_directory}/index.ts`),
-      this.fields,
+      template_options,
     );
   }
 

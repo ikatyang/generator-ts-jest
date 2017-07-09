@@ -20,6 +20,7 @@ const default_answers: Answers = {
   source_directory: 'src',
   generated_directory: 'lib',
   use_exact_version: true,
+  enable_codecov: true,
 };
 
 describe('default', () => {
@@ -86,6 +87,16 @@ describe('node_version = 4', () => {
   });
   test('tsconfig.json', () => {
     assert_file_content('tsconfig.json');
+  });
+});
+describe('enable_codecov = false', () => {
+  beforeAll(before_all({...default_answers, enable_codecov: false}));
+  afterAll(after_all());
+  test('.travis.yml', () => {
+    assert_file_content('.travis.yml');
+  });
+  test('README.md', () => {
+    assert_file_content('README.md');
   });
 });
 
