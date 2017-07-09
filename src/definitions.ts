@@ -26,7 +26,6 @@ export type Fields = Answers & {
 
 export const get_dependencies = (fields: Fields) => [
   '@types/jest',
-  'codecov',
   'jest',
   'ts-jest',
   'tslint',

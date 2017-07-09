@@ -34,6 +34,9 @@ node_js:
 - 6
 - 8
 
+before_install:
+- yarn global add codecov
+
 env:
 - JOB=test
 
@@ -42,8 +45,8 @@ script:
 - if [ \\"$JOB\\" = \\"test\\" ]; then yarn run test -- --verbose; fi
 - if [ \\"$JOB\\" = \\"test-coverage\\" ]; then yarn run test -- --verbose --coverage; fi
 
-after_success:
-- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then node_modules/.bin/codecov; fi
+after_script:
+- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then codecov; fi
 
 cache:
   yarn: true
@@ -227,6 +230,9 @@ node_js:
 - 6
 - 8
 
+before_install:
+- yarn global add codecov
+
 env:
 - JOB=test
 
@@ -235,8 +241,8 @@ script:
 - if [ \\"$JOB\\" = \\"test\\" ]; then yarn run test -- --verbose; fi
 - if [ \\"$JOB\\" = \\"test-coverage\\" ]; then yarn run test -- --verbose --coverage; fi
 
-after_success:
-- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then node_modules/.bin/codecov; fi
+after_script:
+- if [ \\"$JOB\\" = \\"test-coverage\\" ]; then codecov; fi
 
 cache:
   yarn: true
