@@ -14,24 +14,24 @@
   "author": "ikatyang",
   "license": "MIT",
   "scripts": {
+    "prepublish": "npm run build",
     "lint": "tslint -p ./tsconfig.json --type-check",
-    "link": "ln -sf $PWD/types/* $PWD/node_modules/@types",
-    "prepublish": "yarn run link && yarn run build",
     "prebuild": "rm -rf ./app",
     "build": "tsc -p tsconfig.build.json",
     "postbuild": "cp -r ./src/templates ./app",
     "test": "jest --config ./jest.json"
   },
   "dependencies": {
-    "@types/dedent": "^0.7.0",
-    "@types/lodash.kebabcase": "^4.1.2",
-    "@types/yeoman-generator": "^1.0.2",
     "dedent": "^0.7.0",
     "lodash.kebabcase": "^4.1.1",
     "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {
+    "@types/dedent": "0.7.0",
     "@types/jest": "20.0.4",
+    "@types/lodash.kebabcase": "4.1.2",
+    "@types/yeoman-generator": "1.0.2",
+    "@types/yeoman-test": "1.7.0",
     "jest": "20.0.4",
     "ts-jest": "20.0.7",
     "tslint": "5.5.0",
