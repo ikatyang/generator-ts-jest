@@ -1,15 +1,11 @@
 language: node_js
 
 node_js:
-- '6'
-- 'stable'
+- 6
+- stable
 
 before_install:
 - yarn global add codecov
-- yarn global add greenkeeper-lockfile@1
-
-before_script:
-- greenkeeper-lockfile-update
 
 script:
 - yarn run lint
@@ -18,7 +14,6 @@ script:
 
 after_script:
 - codecov
-- greenkeeper-lockfile-upload
 
 cache:
   yarn: true
