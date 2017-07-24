@@ -1,4 +1,5 @@
 {
+  "packageFiles": ["package.json"],
   "automerge": "minor",
   "depTypes": [
     {
