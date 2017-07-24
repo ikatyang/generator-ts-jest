@@ -1,4 +1,4 @@
-import {execSync} from 'child_process';
+import { execSync } from 'child_process';
 
 export function get_tsconfig_target(node_version: string) {
   switch (node_version) {
@@ -34,7 +34,7 @@ export function get_node_versions(node_version: string) {
 
 export function get_git_info(field: string): string {
   try {
-    return execSync(`git config --get ${field}`, {encoding: 'utf8'}).trim();
+    return execSync(`git config --get ${field}`, { encoding: 'utf8' }).trim();
   } catch (e) {
     // istanbul ignore next
     return '';
