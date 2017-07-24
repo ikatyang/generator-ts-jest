@@ -1,31 +1,37 @@
 import * as fs from 'fs';
 import * as Generator from 'yeoman-generator';
-import {get_dependencies, get_questions, Answers, Fields} from './definitions';
-import {get_node_versions, get_tsconfig_target} from './utils';
+import {
+  get_dependencies,
+  get_questions,
+  Answers,
+  Fields,
+} from './definitions';
+import { get_node_versions, get_tsconfig_target } from './utils';
 
 import dedent = require('dedent'); // tslint:disable-line:no-require-imports
 import dashify = require('lodash.kebabcase'); // tslint:disable-line:no-require-imports
 
 const helpers = {
   dedent,
-  write_if_present: (write: boolean, content: string) => write ? content : '',
+  write_if_present: (write: boolean, content: string) => (write ? content : ''),
 };
 
-class TSJestGenerator extends Generator {
-
+class TsJestGenerator extends Generator {
   public fields: Fields;
 
   // tslint:disable-next-line:promise-function-async
   public prompting() {
     return this.prompt(get_questions(this.appname)).then((answers: Answers) => {
-      const keywords_text = (typeof answers.project_keywords === 'string')
-        ? answers.project_keywords.trim()
-        : '';
+      const keywords_text =
+        typeof answers.project_keywords === 'string'
+          ? answers.project_keywords.trim()
+          : '';
       this.fields = {
         ...answers,
-        project_keywords: (keywords_text.length === 0)
-          ? []
-          : keywords_text.split(/\s+/).map(dashify).sort(),
+        project_keywords:
+          keywords_text.length === 0
+            ? []
+            : keywords_text.split(/\s+/).map(dashify).sort(),
         tsconfig_target: get_tsconfig_target(answers.node_version),
         node_versions: get_node_versions(answers.node_version),
         github_profile: `https://github.com/${answers.github_username}`,
@@ -40,8 +46,9 @@ class TSJestGenerator extends Generator {
       ...helpers,
       ...this.fields,
     };
-    fs.readdirSync(template_dirname)
-      .filter(filename => (filename !== 'src'))
+    fs
+      .readdirSync(template_dirname)
+      .filter(filename => filename !== 'src')
       .forEach(filename => {
         this.fs.copyTpl(
           this.templatePath(`${template_dirname}/${filename}`),
@@ -62,12 +69,9 @@ class TSJestGenerator extends Generator {
     // istanbul ignore next
     this.yarnInstall(dependencies, {
       dev: true,
-      ...this.fields.use_exact_version
-        ? {exact: true}
-        : {},
+      ...this.fields.use_exact_version ? { exact: true } : {},
     });
   }
-
 }
 
-export = TSJestGenerator;
+export = TsJestGenerator;

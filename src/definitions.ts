@@ -1,5 +1,5 @@
 import dashify = require('lodash.kebabcase'); // tslint:disable-line:no-require-imports
-import {get_git_info} from './utils';
+import { get_git_info } from './utils';
 
 export interface Answers {
   project_name: string;
@@ -80,11 +80,7 @@ export const get_questions = (appname: string) => [
     name: 'node_version',
     message: 'Target Node Version',
     default: '6',
-    choices: [
-      '4',
-      '6',
-      'stable',
-    ],
+    choices: ['4', '6', 'stable'],
   },
   {
     type: 'input',
