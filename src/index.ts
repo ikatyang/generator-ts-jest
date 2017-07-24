@@ -16,7 +16,7 @@ const helpers = {
   write_if_present: (write: boolean, content: string) => (write ? content : ''),
 };
 
-class TSJestGenerator extends Generator {
+class TsJestGenerator extends Generator {
   public fields: Fields;
 
   // tslint:disable-next-line:promise-function-async
@@ -74,4 +74,4 @@ class TSJestGenerator extends Generator {
   }
 }
 
-export = TSJestGenerator;
+export = TsJestGenerator;
