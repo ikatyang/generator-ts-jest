@@ -65,9 +65,9 @@
     "@types/rx" "*"
     "@types/through" "*"
 
-"@types/jest@20.0.5":
-  version "20.0.5"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.5.tgz#f463e58b2de6e801f40e33b05db894babdbad98c"
+"@types/jest@20.0.4":
+  version "20.0.4"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.4.tgz#91e2c76fbe90b3a719b5d689958f0495f005beb9"
 
 "@types/lodash.kebabcase@4.1.2":
   version "4.1.2"
@@ -212,9 +212,9 @@
   dependencies:
     "@types/inquirer" "*"
 
-"@types/yeoman-test@1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@types/yeoman-test/-/yeoman-test-1.7.0.tgz#8bbf8672939b1d6a94537d2a689e2ff63bff4251"
+"@types/yeoman-test@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@types/yeoman-test/-/yeoman-test-1.7.1.tgz#56d986514cb6c24c4acbf0dbfee7f8c352ae27f4"
   dependencies:
     "@types/yeoman-generator" "*"
 
