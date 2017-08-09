@@ -2846,9 +2846,9 @@ tslint-config-ikatyang@2.1.0:
     tslint-eslint-rules "~4.1.0"
     tslint-plugin-ikatyang "~1.0.0"
 
-tslint-config-prettier-ext@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/tslint-config-prettier-ext/-/tslint-config-prettier-ext-1.4.0.tgz#b83d96cb856e385032f083b5fdb7ceb873d4922e"
+tslint-config-prettier-ext@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/tslint-config-prettier-ext/-/tslint-config-prettier-ext-1.5.0.tgz#1bf25bc5820dd18cc7d0ef23a0c4fd6c943840a9"
 
 tslint-consistent-codestyle@~1.6.0:
   version "1.6.0"
@@ -3202,8 +3202,8 @@ yeoman-environment@^1.1.0:
     untildify "^2.0.0"
 
 yeoman-environment@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-2.0.1.tgz#2b89415abd47775878bf4f77dbca97158f77de88"
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-2.0.2.tgz#504ece28e11b5ac487e90b97d8189afa38db4331"
   dependencies:
     chalk "^1.0.0"
     debug "^2.0.0"
