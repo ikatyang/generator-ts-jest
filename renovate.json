@@ -1,15 +1,4 @@
 {
-  "packageFiles": ["package.json"],
-  "automerge": "minor",
-  "depTypes": [
-    {
-      "depType": "dependencies",
-      "pinVersions": false
-    }
-  ],
-  "pinVersions": true,
-  "prCreation": "not-pending",
-  "rebaseStalePrs": true,
-  "semanticCommits": true,
-  "unpublishSafe": false
+  "extends": "ikatyang:library",
+  "packageFiles": ["package.json"]
 }
