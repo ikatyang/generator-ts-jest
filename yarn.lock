@@ -24,8 +24,8 @@
     "@types/lodash" "*"
 
 "@types/lodash@*":
-  version "4.14.73"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.73.tgz#9837e47db8643ba5bcef2c7921f37d90f9c24213"
+  version "4.14.74"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.74.tgz#ac3bd8db988e7f7038e5d22bd76a7ba13f876168"
 
 "@types/node@*":
   version "8.0.24"
@@ -120,14 +120,14 @@
     "@types/rx-lite-virtualtime" "*"
 
 "@types/through@*":
-  version "0.0.28"
-  resolved "https://registry.yarnpkg.com/@types/through/-/through-0.0.28.tgz#1effa9a6d00fb48572b4cc9f44df25b0100db7fc"
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/through/-/through-0.0.29.tgz#72943aac922e179339c651fa34a4428a4d722f93"
   dependencies:
     "@types/node" "*"
 
-"@types/yeoman-generator@*", "@types/yeoman-generator@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@types/yeoman-generator/-/yeoman-generator-1.0.2.tgz#132de401554ca4a16e07e83750565cafe0982362"
+"@types/yeoman-generator@*", "@types/yeoman-generator@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/yeoman-generator/-/yeoman-generator-1.0.3.tgz#cb90cd0c3fd9bb18c093a377d756caff13a2b48a"
   dependencies:
     "@types/inquirer" "*"
 
