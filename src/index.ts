@@ -31,7 +31,10 @@ class TsJestGenerator extends Generator {
         project_keywords:
           keywords_text.length === 0
             ? []
-            : keywords_text.split(/\s+/).map(dashify).sort(),
+            : keywords_text
+                .split(/\s+/)
+                .map(dashify)
+                .sort(),
         tsconfig_target: get_tsconfig_target(answers.node_version),
         node_versions: get_node_versions(answers.node_version),
         github_profile: `https://github.com/${answers.github_username}`,
