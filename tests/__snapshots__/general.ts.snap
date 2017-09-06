@@ -119,6 +119,9 @@ Object {
     "ts-jest",
     "tslint",
     "typescript",
+    "prettier",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier",
     "tslint-config-ikatyang",
   ],
 }
@@ -209,14 +212,18 @@ exports[`default tsconfig.json 1`] = `
     \\"declaration\\": true,
     \\"importHelpers\\": true
   },
-  \\"include\\": [\\"src/**/*.ts\\"]
+  \\"include\\": [\\"src/**/*.ts\\", \\"tests/**/*.ts\\"]
 }
 "
 `;
 
 exports[`default tslint.json 1`] = `
 "{
-  \\"extends\\": \\"tslint-config-ikatyang\\"
+  \\"rulesDirectory\\": [\\"tslint-plugin-prettier\\"],
+  \\"extends\\": [\\"tslint-config-ikatyang\\", \\"tslint-config-prettier\\"],
+  \\"rules\\": {
+    \\"prettier\\": true
+  }
 }
 "
 `;
@@ -379,6 +386,9 @@ Object {
     "ts-jest",
     "tslint",
     "typescript",
+    "prettier",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier",
     "tslint-config-ikatyang",
   ],
 }
@@ -467,7 +477,7 @@ exports[`node_version = 4 tsconfig.json 1`] = `
     \\"declaration\\": true,
     \\"importHelpers\\": true
   },
-  \\"include\\": [\\"src/**/*.ts\\"]
+  \\"include\\": [\\"src/**/*.ts\\", \\"tests/**/*.ts\\"]
 }
 "
 `;
@@ -520,6 +530,9 @@ Object {
     "ts-jest",
     "tslint",
     "typescript",
+    "prettier",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier",
   ],
 }
 `;

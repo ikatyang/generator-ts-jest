@@ -36,6 +36,9 @@ export const get_dev_dependencies = (fields: Fields) =>
     'ts-jest',
     'tslint',
     'typescript',
+    'prettier',
+    'tslint-plugin-prettier',
+    'tslint-config-prettier',
   ].concat(
     fields.tslint_config_preset.startsWith('tslint:')
       ? []
