@@ -63,13 +63,15 @@ class TsJestGenerator extends Generator {
     const dev_dependencies = get_dev_dependencies(this.fields);
 
     // istanbul ignore next
-    this.yarnInstall(dependencies);
-
-    // istanbul ignore next
-    this.yarnInstall(dev_dependencies, {
-      dev: true,
-      ...this.fields.use_exact_version ? { exact: true } : {},
-    });
+    this.yarnInstall(
+      dev_dependencies,
+      {
+        dev: true,
+        'ignore-scripts': true,
+        ...this.fields.use_exact_version ? { exact: true } : {},
+      },
+      () => this.yarnInstall(dependencies),
+    );
   }
 }
 
