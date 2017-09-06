@@ -152,7 +152,7 @@ exports[`default jest.config.js 1`] = `
 exports[`default package.json 1`] = `
 "{
   \\"name\\": \\"my-awesome-project\\",
-  \\"version\\": \\"0.0.0-dev\\",
+  \\"version\\": \\"1.0.0\\",
   \\"description\\": \\"my awesome description\\",
   \\"keywords\\": [
     \\"awesome\\",
@@ -431,7 +431,7 @@ matrix:
 exports[`node_version = 4 package.json 1`] = `
 "{
   \\"name\\": \\"my-awesome-project\\",
-  \\"version\\": \\"0.0.0-dev\\",
+  \\"version\\": \\"1.0.0\\",
   \\"description\\": \\"my awesome description\\",
   \\"keywords\\": [
     \\"awesome\\",
@@ -485,7 +485,7 @@ exports[`node_version = 4 tsconfig.json 1`] = `
 exports[`project_keywords = "" package.json 1`] = `
 "{
   \\"name\\": \\"my-awesome-project\\",
-  \\"version\\": \\"0.0.0-dev\\",
+  \\"version\\": \\"1.0.0\\",
   \\"description\\": \\"my awesome description\\",
   \\"keywords\\": [],
   \\"main\\": \\"lib/index.js\\",

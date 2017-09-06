@@ -1,6 +1,6 @@
 {
   "name": "<%= project_name %>",
-  "version": "0.0.0-dev",
+  "version": "1.0.0",
   "description": <%- JSON.stringify(project_description) %>,
   "keywords": <%- JSON.stringify(project_keywords, null, 4).replace(/\n\]$/, '\n  ]') %>,
   "main": "<%= generated_directory %>/index.js",
