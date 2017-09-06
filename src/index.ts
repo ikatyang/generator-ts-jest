@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as Generator from 'yeoman-generator';
 import {
   get_dependencies,
+  get_dev_dependencies,
   get_fields,
   get_questions,
   Answers,
@@ -59,9 +60,13 @@ class TsJestGenerator extends Generator {
 
   public install() {
     const dependencies = get_dependencies(this.fields);
+    const dev_dependencies = get_dev_dependencies(this.fields);
 
     // istanbul ignore next
-    this.yarnInstall(dependencies, {
+    this.yarnInstall(dependencies);
+
+    // istanbul ignore next
+    this.yarnInstall(dev_dependencies, {
       dev: true,
       ...this.fields.use_exact_version ? { exact: true } : {},
     });

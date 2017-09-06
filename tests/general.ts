@@ -1,7 +1,13 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as helpers from 'yeoman-test';
-import { get_dependencies, get_fields, Answers } from '../src/definitions';
+import {
+  get_dependencies,
+  get_dev_dependencies,
+  get_fields,
+  Answers,
+  Fields,
+} from '../src/definitions';
 import MyGenerator = require('../src/index');
 let dirname: string;
 let run_context: helpers.RunContext;
@@ -66,7 +72,7 @@ describe('default', () => {
   });
   test('dependencies', () => {
     expect(
-      get_dependencies({ ...get_fields(default_answers) }),
+      get_multi_dependencies({ ...get_fields(default_answers) }),
     ).toMatchSnapshot();
   });
 });
@@ -114,14 +120,17 @@ describe('enable_greenkeeper = false', () => {
 describe('import_tslib = false', () => {
   test('dependencies', () => {
     expect(
-      get_dependencies({ ...get_fields(default_answers), import_tslib: false }),
+      get_multi_dependencies({
+        ...get_fields(default_answers),
+        import_tslib: false,
+      }),
     ).toMatchSnapshot();
   });
 });
 describe('tslint_config_preset with prefix `tslint:`', () => {
   test('dependencies', () => {
     expect(
-      get_dependencies({
+      get_multi_dependencies({
         ...get_fields(default_answers),
         tslint_config_preset: 'tslint:all',
       }),
@@ -153,4 +162,11 @@ function assert_file_content(filename: string, is_show = false) {
   } else {
     expect(file_content).toMatchSnapshot();
   }
+}
+
+function get_multi_dependencies(fields: Fields) {
+  return {
+    dependencies: get_dependencies(fields),
+    dev_dependencies: get_dev_dependencies(fields),
+  };
 }

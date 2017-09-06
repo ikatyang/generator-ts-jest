@@ -108,16 +108,20 @@ MIT © [Ika](https://github.com/ikatyang)
 `;
 
 exports[`default dependencies 1`] = `
-Array [
-  "@types/jest",
-  "jest",
-  "standard-version",
-  "ts-jest",
-  "tslint",
-  "typescript",
-  "tslib",
-  "tslint-config-ikatyang",
-]
+Object {
+  "dependencies": Array [
+    "tslib",
+  ],
+  "dev_dependencies": Array [
+    "@types/jest",
+    "jest",
+    "standard-version",
+    "ts-jest",
+    "tslint",
+    "typescript",
+    "tslint-config-ikatyang",
+  ],
+}
 `;
 
 exports[`default jest.config.js 1`] = `
@@ -366,15 +370,18 @@ MIT © [Ika](https://github.com/ikatyang)
 `;
 
 exports[`import_tslib = false dependencies 1`] = `
-Array [
-  "@types/jest",
-  "jest",
-  "standard-version",
-  "ts-jest",
-  "tslint",
-  "typescript",
-  "tslint-config-ikatyang",
-]
+Object {
+  "dependencies": Array [],
+  "dev_dependencies": Array [
+    "@types/jest",
+    "jest",
+    "standard-version",
+    "ts-jest",
+    "tslint",
+    "typescript",
+    "tslint-config-ikatyang",
+  ],
+}
 `;
 
 exports[`node_version = 4 .travis.yml 1`] = `
@@ -502,13 +509,17 @@ exports[`project_keywords = "" package.json 1`] = `
 `;
 
 exports[`tslint_config_preset with prefix \`tslint:\` dependencies 1`] = `
-Array [
-  "@types/jest",
-  "jest",
-  "standard-version",
-  "ts-jest",
-  "tslint",
-  "typescript",
-  "tslib",
-]
+Object {
+  "dependencies": Array [
+    "tslib",
+  ],
+  "dev_dependencies": Array [
+    "@types/jest",
+    "jest",
+    "standard-version",
+    "ts-jest",
+    "tslint",
+    "typescript",
+  ],
+}
 `;

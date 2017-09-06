@@ -26,13 +26,21 @@ export type Fields = Answers & {
 };
 
 export const get_dependencies = (fields: Fields) =>
-  ['@types/jest', 'jest', 'standard-version', 'ts-jest', 'tslint', 'typescript']
-    .concat(fields.import_tslib ? 'tslib' : [])
-    .concat(
-      fields.tslint_config_preset.startsWith('tslint:')
-        ? []
-        : fields.tslint_config_preset,
-    );
+  fields.import_tslib ? ['tslib'] : [];
+
+export const get_dev_dependencies = (fields: Fields) =>
+  [
+    '@types/jest',
+    'jest',
+    'standard-version',
+    'ts-jest',
+    'tslint',
+    'typescript',
+  ].concat(
+    fields.tslint_config_preset.startsWith('tslint:')
+      ? []
+      : fields.tslint_config_preset,
+  );
 
 export const get_questions = (appname: string) => ({
   project_name: {
