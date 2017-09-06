@@ -6,5 +6,5 @@
     "declaration": true,
     "importHelpers": <%= import_tslib %>
   },
-  "include": ["<%= source_directory %>/**/*.ts"]
+  "include": ["<%= source_directory %>/**/*.ts", "tests/**/*.ts"]
 }
