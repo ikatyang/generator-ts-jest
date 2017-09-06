@@ -44,7 +44,7 @@ before_script:
 
 script:
 - yarn run lint
-- yarn run test -- --coverage --verbose
+- yarn run test
 
 after_script:
 - codecov
@@ -120,24 +120,25 @@ Array [
 ]
 `;
 
-exports[`default jest.json 1`] = `
-"{
-  \\"testEnvironment\\": \\"node\\",
-  \\"moduleFileExtensions\\": [\\"ts\\", \\"js\\", \\"json\\"],
-  \\"testMatch\\": [\\"**/{tests,__tests__}/**/*.ts\\"],
-  \\"transform\\": {\\"\\\\\\\\.ts$\\": \\"ts-jest/preprocessor\\"},
-  \\"mapCoverage\\": true,
-  \\"coverageReporters\\": [\\"lcov\\", \\"text-summary\\"],
-  \\"collectCoverageFrom\\": [\\"src/**/*.ts\\"],
-  \\"coverageThreshold\\": {
-    \\"global\\": {
-      \\"branches\\": 100,
-      \\"functions\\": 100,
-      \\"lines\\": 100,
-      \\"statements\\": 100
-    }
-  }
-}
+exports[`default jest.config.js 1`] = `
+"module.exports = {
+  testEnvironment: 'node',
+  moduleFileExtensions: ['ts', 'js', 'json'],
+  testMatch: ['**/tests/**/*.ts', '**/*.test.ts'],
+  transform: { '\\\\\\\\.ts$': 'ts-jest/preprocessor' },
+  mapCoverage: true,
+  coverageReporters: ['lcov', 'text-summary'],
+  collectCoverage: !!process.env.CI,
+  collectCoverageFrom: ['src/**/*.ts'],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
+};
 "
 `;
 
@@ -164,7 +165,7 @@ exports[`default package.json 1`] = `
   \\"scripts\\": {
     \\"prepublish\\": \\"yarn run build\\",
     \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
-    \\"test\\": \\"jest --config ./jest.json\\",
+    \\"test\\": \\"jest\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
     \\"build\\": \\"tsc -p tsconfig.build.json\\",
     \\"release\\": \\"standard-version\\"
@@ -232,7 +233,7 @@ before_script:
 
 script:
 - yarn run lint
-- yarn run test -- --coverage --verbose
+- yarn run test
 
 cache:
   yarn: true
@@ -303,7 +304,7 @@ before_install:
 
 script:
 - yarn run lint
-- yarn run test -- --coverage --verbose
+- yarn run test
 
 after_script:
 - codecov
@@ -394,7 +395,7 @@ before_script:
 
 script:
 - yarn run lint
-- yarn run test -- --coverage --verbose
+- yarn run test
 
 after_script:
 - codecov
@@ -433,7 +434,7 @@ exports[`node_version = 4 package.json 1`] = `
   \\"scripts\\": {
     \\"prepublish\\": \\"yarn run build\\",
     \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
-    \\"test\\": \\"jest --config ./jest.json\\",
+    \\"test\\": \\"jest\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
     \\"build\\": \\"tsc -p tsconfig.build.json\\",
     \\"release\\": \\"standard-version\\"
@@ -483,7 +484,7 @@ exports[`project_keywords = "" package.json 1`] = `
   \\"scripts\\": {
     \\"prepublish\\": \\"yarn run build\\",
     \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
-    \\"test\\": \\"jest --config ./jest.json\\",
+    \\"test\\": \\"jest\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
     \\"build\\": \\"tsc -p tsconfig.build.json\\",
     \\"release\\": \\"standard-version\\"

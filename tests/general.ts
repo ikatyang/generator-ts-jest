@@ -46,8 +46,8 @@ describe('default', () => {
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');
   });
-  test('jest.json', () => {
-    assert_file_content('jest.json');
+  test('jest.config.js', () => {
+    assert_file_content('jest.config.js');
   });
   test('package.json', () => {
     assert_file_content('package.json');
