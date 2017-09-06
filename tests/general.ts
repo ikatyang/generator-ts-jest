@@ -1,9 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as helpers from 'yeoman-test';
-import { Answers } from '../src/definitions';
-import MyGenerator = require('../src/index'); // tslint:disable-line:no-require-imports
-
+import { get_dependencies, get_fields, Answers } from '../src/definitions';
+import MyGenerator = require('../src/index');
 let dirname: string;
 let run_context: helpers.RunContext;
 
@@ -65,6 +64,11 @@ describe('default', () => {
   test('tslint.json', () => {
     assert_file_content('tslint.json');
   });
+  test('dependencies', () => {
+    expect(
+      get_dependencies({ ...get_fields(default_answers) }),
+    ).toMatchSnapshot();
+  });
 });
 
 describe('project_keywords = ""', () => {
@@ -105,6 +109,23 @@ describe('enable_greenkeeper = false', () => {
   });
   test('README.md', () => {
     assert_file_content('README.md');
+  });
+});
+describe('import_tslib = false', () => {
+  test('dependencies', () => {
+    expect(
+      get_dependencies({ ...get_fields(default_answers), import_tslib: false }),
+    ).toMatchSnapshot();
+  });
+});
+describe('tslint_config_preset with prefix `tslint:`', () => {
+  test('dependencies', () => {
+    expect(
+      get_dependencies({
+        ...get_fields(default_answers),
+        tslint_config_preset: 'tslint:all',
+      }),
+    ).toMatchSnapshot();
   });
 });
 

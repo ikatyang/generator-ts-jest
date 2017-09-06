@@ -107,6 +107,19 @@ MIT © [Ika](https://github.com/ikatyang)
 "
 `;
 
+exports[`default dependencies 1`] = `
+Array [
+  "@types/jest",
+  "jest",
+  "standard-version",
+  "ts-jest",
+  "tslint",
+  "typescript",
+  "tslib",
+  "tslint-config-ikatyang",
+]
+`;
+
 exports[`default jest.json 1`] = `
 "{
   \\"testEnvironment\\": \\"node\\",
@@ -351,6 +364,18 @@ MIT © [Ika](https://github.com/ikatyang)
 "
 `;
 
+exports[`import_tslib = false dependencies 1`] = `
+Array [
+  "@types/jest",
+  "jest",
+  "standard-version",
+  "ts-jest",
+  "tslint",
+  "typescript",
+  "tslint-config-ikatyang",
+]
+`;
+
 exports[`node_version = 4 .travis.yml 1`] = `
 "language: node_js
 
@@ -473,4 +498,16 @@ exports[`project_keywords = "" package.json 1`] = `
   ]
 }
 "
+`;
+
+exports[`tslint_config_preset with prefix \`tslint:\` dependencies 1`] = `
+Array [
+  "@types/jest",
+  "jest",
+  "standard-version",
+  "ts-jest",
+  "tslint",
+  "typescript",
+  "tslib",
+]
 `;

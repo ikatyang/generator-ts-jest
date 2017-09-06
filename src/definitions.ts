@@ -105,3 +105,26 @@ export const get_questions = (appname: string) => ({
     default: true,
   },
 });
+
+export const get_fields = (answers: Answers): Fields => {
+  const questions = get_questions(answers.project_name);
+  const keywords_text =
+    typeof answers.project_keywords === 'string'
+      ? answers.project_keywords.trim()
+      : '';
+  return {
+    ...answers,
+    project_keywords:
+      keywords_text.length === 0
+        ? []
+        : keywords_text
+            .split(/\s+/)
+            .map(dashify)
+            .sort(),
+    node_versions: questions.node_version.choices
+      .slice(questions.node_version.choices.indexOf(answers.node_version))
+      .concat('stable'),
+    github_profile: `https://github.com/${answers.github_username}`,
+    github_repository: `https://github.com/${answers.github_username}/${answers.project_name}`,
+  };
+};

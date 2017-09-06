@@ -2,13 +2,13 @@ import * as fs from 'fs';
 import * as Generator from 'yeoman-generator';
 import {
   get_dependencies,
+  get_fields,
   get_questions,
   Answers,
   Fields,
 } from './definitions';
 
 import dedent = require('dedent'); // tslint:disable-line:no-require-imports
-import dashify = require('lodash.kebabcase'); // tslint:disable-line:no-require-imports
 
 const helpers = {
   dedent,
@@ -30,25 +30,7 @@ class TsJestGenerator extends Generator {
         [],
       ),
     ).then((answers: Answers) => {
-      const keywords_text =
-        typeof answers.project_keywords === 'string'
-          ? answers.project_keywords.trim()
-          : '';
-      this.fields = {
-        ...answers,
-        project_keywords:
-          keywords_text.length === 0
-            ? []
-            : keywords_text
-                .split(/\s+/)
-                .map(dashify)
-                .sort(),
-        node_versions: questions.node_version.choices
-          .slice(questions.node_version.choices.indexOf(answers.node_version))
-          .concat('stable'),
-        github_profile: `https://github.com/${answers.github_username}`,
-        github_repository: `https://github.com/${answers.github_username}/${answers.project_name}`,
-      };
+      this.fields = get_fields(answers);
     });
   }
 
