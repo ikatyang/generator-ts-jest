@@ -24,4 +24,10 @@ yarn global add yo generator-ts-jest
 yo ts-jest
 ```
 
-![demo](https://github.com/ikatyang/generator-ts-jest/raw/master/images/demo.png)
+## Includes
+
+- [TypeScript](https://github.com/Microsoft/TypeScript)
+- [Jest](https://github.com/facebook/jest)
+- [TSLint](https://github.com/palantir/tslint)
+- [Prettier](https://github.com/prettier/prettier)
+- [Standard Version](https://github.com/conventional-changelog/standard-version)
