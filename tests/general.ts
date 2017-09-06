@@ -19,6 +19,7 @@ const default_answers: Answers = {
   node_version: '6',
   source_directory: 'src',
   generated_directory: 'lib',
+  import_tslib: true,
   use_exact_version: true,
   enable_codecov: true,
   enable_greenkeeper: true,

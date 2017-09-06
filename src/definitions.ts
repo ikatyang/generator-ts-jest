@@ -12,6 +12,7 @@ export interface Answers {
   node_version: string;
   source_directory: string;
   generated_directory: string;
+  import_tslib: boolean;
   use_exact_version: boolean;
   enable_codecov: boolean;
   enable_greenkeeper: boolean;
@@ -24,15 +25,16 @@ export type Fields = Answers & {
   github_repository: string;
 };
 
-export const get_dependencies = (fields: Fields) => [
-  '@types/jest',
-  'jest',
-  'standard-version',
-  'ts-jest',
-  'tslint',
-  fields.tslint_config_preset,
-  'typescript',
-];
+export const get_dependencies = (fields: Fields) =>
+  [
+    '@types/jest',
+    'jest',
+    'standard-version',
+    'ts-jest',
+    'tslint',
+    fields.tslint_config_preset,
+    'typescript',
+  ].concat(fields.import_tslib ? 'tslib' : []);
 
 export const get_questions = (appname: string) => ({
   project_name: {
@@ -83,6 +85,11 @@ export const get_questions = (appname: string) => ({
     type: 'input',
     message: 'Generated Directory',
     default: 'lib',
+  },
+  import_tslib: {
+    type: 'confirm',
+    message: 'Import helpers from tslib',
+    default: true,
   },
   use_exact_version: {
     type: 'confirm',

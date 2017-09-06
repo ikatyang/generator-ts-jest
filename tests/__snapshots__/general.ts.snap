@@ -188,7 +188,8 @@ exports[`default tsconfig.json 1`] = `
     \\"strict\\": true,
     \\"lib\\": [\\"es6\\"],
     \\"module\\": \\"commonjs\\",
-    \\"declaration\\": true
+    \\"declaration\\": true,
+    \\"importHelpers\\": true
   },
   \\"include\\": [\\"src/**/*.ts\\"]
 }
@@ -430,7 +431,8 @@ exports[`node_version = 4 tsconfig.json 1`] = `
     \\"strict\\": true,
     \\"lib\\": [\\"es6\\"],
     \\"module\\": \\"commonjs\\",
-    \\"declaration\\": true
+    \\"declaration\\": true,
+    \\"importHelpers\\": true
   },
   \\"include\\": [\\"src/**/*.ts\\"]
 }
