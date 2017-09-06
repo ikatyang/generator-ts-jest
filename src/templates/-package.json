@@ -14,7 +14,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "prepublish": "npm run build",
+    "prepublish": "yarn run build",
     "lint": "tslint -p ./tsconfig.json --type-check",
     "test": "jest",
     "prebuild": "rm -rf ./<%= generated_directory %>",
