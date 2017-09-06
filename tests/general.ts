@@ -21,6 +21,7 @@ const default_answers: Answers = {
   user_name: 'Ika',
   user_email: 'ikatyang@gmail.com',
   tslint_config_preset: 'tslint-config-ikatyang',
+  prettier_config_preset: 'prettier-config-ikatyang',
   node_version: '6',
   source_directory: 'src',
   generated_directory: 'lib',
@@ -54,6 +55,9 @@ describe('default', () => {
   });
   test('jest.config.js', () => {
     assert_file_content('jest.config.js');
+  });
+  test('prettier.config.js', () => {
+    assert_file_content('prettier.config.js');
   });
   test('package.json', () => {
     assert_file_content('package.json');
@@ -133,6 +137,16 @@ describe('tslint_config_preset with prefix `tslint:`', () => {
       get_multi_dependencies({
         ...get_fields(default_answers),
         tslint_config_preset: 'tslint:all',
+      }),
+    ).toMatchSnapshot();
+  });
+});
+describe('prettier_config_preset = empty string', () => {
+  test('dependencies', () => {
+    expect(
+      get_multi_dependencies({
+        ...get_fields(default_answers),
+        prettier_config_preset: '',
       }),
     ).toMatchSnapshot();
   });

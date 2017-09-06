@@ -9,6 +9,7 @@ export interface Answers {
   user_name: string;
   user_email: string;
   tslint_config_preset: string;
+  prettier_config_preset: string;
   node_version: string;
   source_directory: string;
   generated_directory: string;
@@ -39,11 +40,17 @@ export const get_dev_dependencies = (fields: Fields) =>
     'prettier',
     'tslint-plugin-prettier',
     'tslint-config-prettier',
-  ].concat(
-    fields.tslint_config_preset.startsWith('tslint:')
-      ? []
-      : fields.tslint_config_preset,
-  );
+  ]
+    .concat(
+      fields.tslint_config_preset.startsWith('tslint:')
+        ? []
+        : fields.tslint_config_preset,
+    )
+    .concat(
+      fields.prettier_config_preset.length === 0
+        ? []
+        : fields.prettier_config_preset,
+    );
 
 export const get_questions = (appname: string) => ({
   project_name: {
@@ -78,6 +85,11 @@ export const get_questions = (appname: string) => ({
     type: 'input',
     message: 'TSLint Config Preset',
     default: 'tslint-config-ikatyang',
+  },
+  prettier_config_preset: {
+    type: 'input',
+    message: 'Prettier Config Preset',
+    default: 'prettier-config-ikatyang',
   },
   node_version: {
     type: 'list',

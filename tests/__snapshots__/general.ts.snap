@@ -123,6 +123,7 @@ Object {
     "tslint-plugin-prettier",
     "tslint-config-prettier",
     "tslint-config-ikatyang",
+    "prettier-config-ikatyang",
   ],
 }
 `;
@@ -186,6 +187,11 @@ exports[`default package.json 1`] = `
     \\"/lib/**/*\\"
   ]
 }
+"
+`;
+
+exports[`default prettier.config.js 1`] = `
+"module.exports = require('prettier-config-ikatyang');
 "
 `;
 
@@ -390,6 +396,7 @@ Object {
     "tslint-plugin-prettier",
     "tslint-config-prettier",
     "tslint-config-ikatyang",
+    "prettier-config-ikatyang",
   ],
 }
 `;
@@ -482,6 +489,26 @@ exports[`node_version = 4 tsconfig.json 1`] = `
 "
 `;
 
+exports[`prettier_config_preset = empty string dependencies 1`] = `
+Object {
+  "dependencies": Array [
+    "tslib",
+  ],
+  "dev_dependencies": Array [
+    "@types/jest",
+    "jest",
+    "standard-version",
+    "ts-jest",
+    "tslint",
+    "typescript",
+    "prettier",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier",
+    "tslint-config-ikatyang",
+  ],
+}
+`;
+
 exports[`project_keywords = "" package.json 1`] = `
 "{
   \\"name\\": \\"my-awesome-project\\",
@@ -533,6 +560,7 @@ Object {
     "prettier",
     "tslint-plugin-prettier",
     "tslint-config-prettier",
+    "prettier-config-ikatyang",
   ],
 }
 `;
