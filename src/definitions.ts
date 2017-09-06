@@ -19,7 +19,6 @@ export interface Answers {
 
 export type Fields = Answers & {
   project_keywords: string[];
-  tsconfig_target: string;
   node_versions: string[];
   github_profile: string;
   github_repository: string;
@@ -35,82 +34,69 @@ export const get_dependencies = (fields: Fields) => [
   'typescript',
 ];
 
-export const get_questions = (appname: string) => [
-  {
+export const get_questions = (appname: string) => ({
+  project_name: {
     type: 'input',
-    name: 'project_name',
     message: 'Project Name',
     default: dashify(appname),
   },
-  {
+  project_description: {
     type: 'input',
-    name: 'project_description',
     message: 'Project Description',
   },
-  {
+  project_keywords: {
     type: 'input',
-    name: 'project_keywords',
     message: 'Project Keywords',
   },
-  {
+  user_name: {
     type: 'input',
-    name: 'user_name',
     message: 'User Name',
     default: get_git_info('user.name'),
   },
-  {
+  user_email: {
     type: 'input',
-    name: 'user_email',
     message: 'User Email',
     default: get_git_info('user.email'),
   },
-  {
+  github_username: {
     type: 'input',
-    name: 'github_username',
     message: 'GitHub Username',
     default: get_git_info('user.name'),
   },
-  {
+  tslint_config_preset: {
     type: 'input',
-    name: 'tslint_config_preset',
     message: 'TSLint Config Preset',
     default: 'tslint-config-ikatyang',
   },
-  {
+  node_version: {
     type: 'list',
-    name: 'node_version',
     message: 'Target Node Version',
-    default: '6',
-    choices: ['4', '6', 'stable'],
+    default: '4',
+    choices: ['4', '6', '8'],
   },
-  {
+  source_directory: {
     type: 'input',
-    name: 'source_directory',
     message: 'Source Directory',
     default: 'src',
   },
-  {
+  generated_directory: {
     type: 'input',
-    name: 'generated_directory',
     message: 'Generated Directory',
     default: 'lib',
   },
-  {
+  use_exact_version: {
     type: 'confirm',
-    name: 'use_exact_version',
     message: 'Use Exact Version',
     default: true,
   },
-  {
+  enable_codecov: {
     type: 'confirm',
-    name: 'enable_codecov',
     message: 'Enable Codecov',
     default: true,
   },
-  {
+  enable_greenkeeper: {
     type: 'confirm',
-    name: 'enable_greenkeeper',
     message: 'Enable Greenkeeper',
     default: true,
   },
-];
+});

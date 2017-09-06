@@ -6,7 +6,6 @@ import {
   Answers,
   Fields,
 } from './definitions';
-import { get_node_versions, get_tsconfig_target } from './utils';
 
 import dedent = require('dedent'); // tslint:disable-line:no-require-imports
 import dashify = require('lodash.kebabcase'); // tslint:disable-line:no-require-imports
@@ -21,7 +20,16 @@ class TsJestGenerator extends Generator {
 
   // tslint:disable-next-line:promise-function-async
   public prompting() {
-    return this.prompt(get_questions(this.appname)).then((answers: Answers) => {
+    const questions = get_questions(this.appname);
+    return this.prompt(
+      Object.keys(questions).reduce(
+        (current, name: keyof typeof questions) => [
+          ...current,
+          { name, ...questions[name] },
+        ],
+        [],
+      ),
+    ).then((answers: Answers) => {
       const keywords_text =
         typeof answers.project_keywords === 'string'
           ? answers.project_keywords.trim()
@@ -35,8 +43,9 @@ class TsJestGenerator extends Generator {
                 .split(/\s+/)
                 .map(dashify)
                 .sort(),
-        tsconfig_target: get_tsconfig_target(answers.node_version),
-        node_versions: get_node_versions(answers.node_version),
+        node_versions: questions.node_version.choices
+          .slice(questions.node_version.choices.indexOf(answers.node_version))
+          .concat('stable'),
         github_profile: `https://github.com/${answers.github_username}`,
         github_repository: `https://github.com/${answers.github_username}/${answers.project_name}`,
       };
