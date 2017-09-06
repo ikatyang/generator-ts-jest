@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as helpers from 'yeoman-test';
-import {Answers} from '../src/definitions';
+import { Answers } from '../src/definitions';
 import MyGenerator = require('../src/index'); // tslint:disable-line:no-require-imports
 
 let dirname: string;
@@ -25,7 +25,6 @@ const default_answers: Answers = {
 };
 
 describe('default', () => {
-
   beforeAll(before_all(default_answers));
   afterAll(after_all());
 
@@ -68,14 +67,14 @@ describe('default', () => {
 });
 
 describe('project_keywords = ""', () => {
-  beforeAll(before_all({...default_answers, project_keywords: ''}));
+  beforeAll(before_all({ ...default_answers, project_keywords: '' }));
   afterAll(after_all());
   test('package.json', () => {
     assert_file_content('package.json');
   });
 });
 describe('node_version = 4', () => {
-  beforeAll(before_all({...default_answers, node_version: '4'}));
+  beforeAll(before_all({ ...default_answers, node_version: '4' }));
   afterAll(after_all());
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');
@@ -88,7 +87,7 @@ describe('node_version = 4', () => {
   });
 });
 describe('enable_codecov = false', () => {
-  beforeAll(before_all({...default_answers, enable_codecov: false}));
+  beforeAll(before_all({ ...default_answers, enable_codecov: false }));
   afterAll(after_all());
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');
@@ -98,7 +97,7 @@ describe('enable_codecov = false', () => {
   });
 });
 describe('enable_greenkeeper = false', () => {
-  beforeAll(before_all({...default_answers, enable_greenkeeper: false}));
+  beforeAll(before_all({ ...default_answers, enable_greenkeeper: false }));
   afterAll(after_all());
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');
@@ -109,11 +108,11 @@ describe('enable_greenkeeper = false', () => {
 });
 
 function before_all(answers: Answers) {
-  return () => {
-    run_context = helpers
-      .run(MyGenerator)
-      .withPrompts(answers);
-    return run_context.then(dir => { dirname = dir; });
+  return async () => {
+    run_context = helpers.run(MyGenerator).withPrompts(answers);
+    return run_context.then(dir => {
+      dirname = dir;
+    });
   };
 }
 
