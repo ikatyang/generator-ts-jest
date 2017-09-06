@@ -47,9 +47,6 @@ describe('default', () => {
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');
   });
-  test('CHANGELOG.md', () => {
-    assert_file_content('CHANGELOG.md');
-  });
   test('jest.json', () => {
     assert_file_content('jest.json');
   });

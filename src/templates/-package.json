@@ -18,7 +18,8 @@
     "lint": "tslint -p ./tsconfig.json --type-check",
     "test": "jest --config ./jest.json",
     "prebuild": "rm -rf ./<%= generated_directory %>",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsc -p tsconfig.build.json",
+    "release": "standard-version"
   },
   "dependencies": {},
   "devDependencies": {},

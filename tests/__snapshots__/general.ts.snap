@@ -59,26 +59,6 @@ matrix:
 "
 `;
 
-exports[`default CHANGELOG.md 1`] = `
-"# Change Log
-
-All changes to this project will be documented in this file.
-
-> **Tags:**
-> - 💥 [Breaking Change]
-> - 🚀 [New Feature]
-> - 🐛 [Bug Fix]
-> - 📝 [Documentation]
-> - 🏠 [Internal]
-> - 💅 [Polish]
-
-## Unreleased
-
-#### 🚀 New Feature
-- Release first version
-"
-`;
-
 exports[`default README.md 1`] = `
 "# my-awesome-project
 
@@ -172,7 +152,8 @@ exports[`default package.json 1`] = `
     \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
     \\"test\\": \\"jest --config ./jest.json\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
-    \\"build\\": \\"tsc -p tsconfig.build.json\\"
+    \\"build\\": \\"tsc -p tsconfig.build.json\\",
+    \\"release\\": \\"standard-version\\"
   },
   \\"dependencies\\": {},
   \\"devDependencies\\": {},
@@ -424,7 +405,8 @@ exports[`node_version = 4 package.json 1`] = `
     \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
     \\"test\\": \\"jest --config ./jest.json\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
-    \\"build\\": \\"tsc -p tsconfig.build.json\\"
+    \\"build\\": \\"tsc -p tsconfig.build.json\\",
+    \\"release\\": \\"standard-version\\"
   },
   \\"dependencies\\": {},
   \\"devDependencies\\": {},
@@ -472,7 +454,8 @@ exports[`project_keywords = "" package.json 1`] = `
     \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
     \\"test\\": \\"jest --config ./jest.json\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
-    \\"build\\": \\"tsc -p tsconfig.build.json\\"
+    \\"build\\": \\"tsc -p tsconfig.build.json\\",
+    \\"release\\": \\"standard-version\\"
   },
   \\"dependencies\\": {},
   \\"devDependencies\\": {},

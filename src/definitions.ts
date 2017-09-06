@@ -28,6 +28,7 @@ export type Fields = Answers & {
 export const get_dependencies = (fields: Fields) => [
   '@types/jest',
   'jest',
+  'standard-version',
   'ts-jest',
   'tslint',
   fields.tslint_config_preset,
