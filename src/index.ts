@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import * as Generator from 'yeoman-generator';
+import Generator = require('yeoman-generator');
 import {
   get_dependencies,
   get_questions,
