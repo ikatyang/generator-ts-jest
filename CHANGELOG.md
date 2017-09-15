@@ -1,3 +1,22 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/ikatyang/generator-ts-jest/compare/v1.1.0...v1.2.0) (2017-09-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yeoman-generator to v^2.0.0 ([#53](https://github.com/ikatyang/generator-ts-jest/issues/53)) ([b900919](https://github.com/ikatyang/generator-ts-jest/commit/b900919))
+
+
+### Features
+
+* update ([#49](https://github.com/ikatyang/generator-ts-jest/issues/49)) ([4b5fa8f](https://github.com/ikatyang/generator-ts-jest/commit/4b5fa8f))
+
+
+
 <a name="v1.1.0"></a>
 ## [v1.1.0](https://github.com/ikatyang/generator-ts-jest/compare/v1.0.3...v1.1.0) (2017-07-09)
 
