@@ -1,9 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as helpers from 'yeoman-test';
-import {Answers} from '../src/definitions';
-import MyGenerator = require('../src/index'); // tslint:disable-line:no-require-imports
-
+import {
+  get_dependencies,
+  get_dev_dependencies,
+  get_fields,
+  Answers,
+  Fields,
+} from '../src/definitions';
+import MyGenerator = require('../src/index');
 let dirname: string;
 let run_context: helpers.RunContext;
 
@@ -16,16 +21,17 @@ const default_answers: Answers = {
   user_name: 'Ika',
   user_email: 'ikatyang@gmail.com',
   tslint_config_preset: 'tslint-config-ikatyang',
+  prettier_config_preset: 'prettier-config-ikatyang',
   node_version: '6',
   source_directory: 'src',
   generated_directory: 'lib',
+  import_tslib: true,
   use_exact_version: true,
   enable_codecov: true,
   enable_greenkeeper: true,
 };
 
 describe('default', () => {
-
   beforeAll(before_all(default_answers));
   afterAll(after_all());
 
@@ -47,11 +53,11 @@ describe('default', () => {
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');
   });
-  test('CHANGELOG.md', () => {
-    assert_file_content('CHANGELOG.md');
+  test('jest.config.js', () => {
+    assert_file_content('jest.config.js');
   });
-  test('jest.json', () => {
-    assert_file_content('jest.json');
+  test('prettier.config.js', () => {
+    assert_file_content('prettier.config.js');
   });
   test('package.json', () => {
     assert_file_content('package.json');
@@ -68,17 +74,22 @@ describe('default', () => {
   test('tslint.json', () => {
     assert_file_content('tslint.json');
   });
+  test('dependencies', () => {
+    expect(
+      get_multi_dependencies({ ...get_fields(default_answers) }),
+    ).toMatchSnapshot();
+  });
 });
 
 describe('project_keywords = ""', () => {
-  beforeAll(before_all({...default_answers, project_keywords: ''}));
+  beforeAll(before_all({ ...default_answers, project_keywords: '' }));
   afterAll(after_all());
   test('package.json', () => {
     assert_file_content('package.json');
   });
 });
 describe('node_version = 4', () => {
-  beforeAll(before_all({...default_answers, node_version: '4'}));
+  beforeAll(before_all({ ...default_answers, node_version: '4' }));
   afterAll(after_all());
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');
@@ -91,7 +102,7 @@ describe('node_version = 4', () => {
   });
 });
 describe('enable_codecov = false', () => {
-  beforeAll(before_all({...default_answers, enable_codecov: false}));
+  beforeAll(before_all({ ...default_answers, enable_codecov: false }));
   afterAll(after_all());
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');
@@ -101,7 +112,7 @@ describe('enable_codecov = false', () => {
   });
 });
 describe('enable_greenkeeper = false', () => {
-  beforeAll(before_all({...default_answers, enable_greenkeeper: false}));
+  beforeAll(before_all({ ...default_answers, enable_greenkeeper: false }));
   afterAll(after_all());
   test('.travis.yml', () => {
     assert_file_content('.travis.yml');
@@ -110,13 +121,43 @@ describe('enable_greenkeeper = false', () => {
     assert_file_content('README.md');
   });
 });
+describe('import_tslib = false', () => {
+  test('dependencies', () => {
+    expect(
+      get_multi_dependencies({
+        ...get_fields(default_answers),
+        import_tslib: false,
+      }),
+    ).toMatchSnapshot();
+  });
+});
+describe('tslint_config_preset with prefix `tslint:`', () => {
+  test('dependencies', () => {
+    expect(
+      get_multi_dependencies({
+        ...get_fields(default_answers),
+        tslint_config_preset: 'tslint:all',
+      }),
+    ).toMatchSnapshot();
+  });
+});
+describe('prettier_config_preset = empty string', () => {
+  test('dependencies', () => {
+    expect(
+      get_multi_dependencies({
+        ...get_fields(default_answers),
+        prettier_config_preset: '',
+      }),
+    ).toMatchSnapshot();
+  });
+});
 
 function before_all(answers: Answers) {
-  return () => {
-    run_context = helpers
-      .run(MyGenerator)
-      .withPrompts(answers);
-    return run_context.then(dir => { dirname = dir; });
+  return async () => {
+    run_context = helpers.run(MyGenerator).withPrompts(answers);
+    return run_context.then(dir => {
+      dirname = dir;
+    });
   };
 }
 
@@ -135,4 +176,11 @@ function assert_file_content(filename: string, is_show = false) {
   } else {
     expect(file_content).toMatchSnapshot();
   }
+}
+
+function get_multi_dependencies(fields: Fields) {
+  return {
+    dependencies: get_dependencies(fields),
+    dev_dependencies: get_dev_dependencies(fields),
+  };
 }

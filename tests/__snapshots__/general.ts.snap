@@ -32,6 +32,7 @@ exports[`default .travis.yml 1`] = `
 
 node_js:
 - 6
+- 8
 - stable
 
 before_install:
@@ -43,7 +44,7 @@ before_script:
 
 script:
 - yarn run lint
-- yarn run test -- --coverage --verbose
+- yarn run test
 
 after_script:
 - codecov
@@ -56,26 +57,6 @@ cache:
 
 matrix:
   fast_finish: true
-"
-`;
-
-exports[`default CHANGELOG.md 1`] = `
-"# Change Log
-
-All changes to this project will be documented in this file.
-
-> **Tags:**
-> - 💥 [Breaking Change]
-> - 🚀 [New Feature]
-> - 🐛 [Bug Fix]
-> - 📝 [Documentation]
-> - 🏠 [Internal]
-> - 💅 [Polish]
-
-## Unreleased
-
-#### 🚀 New Feature
-- Release first version
 "
 `;
 
@@ -126,31 +107,53 @@ MIT © [Ika](https://github.com/ikatyang)
 "
 `;
 
-exports[`default jest.json 1`] = `
-"{
-  \\"testEnvironment\\": \\"node\\",
-  \\"moduleFileExtensions\\": [\\"ts\\", \\"js\\", \\"json\\"],
-  \\"testMatch\\": [\\"**/{tests,__tests__}/**/*.ts\\"],
-  \\"transform\\": {\\"\\\\\\\\.ts$\\": \\"ts-jest/preprocessor\\"},
-  \\"mapCoverage\\": true,
-  \\"coverageReporters\\": [\\"lcov\\", \\"text-summary\\"],
-  \\"collectCoverageFrom\\": [\\"src/**/*.ts\\"],
-  \\"coverageThreshold\\": {
-    \\"global\\": {
-      \\"branches\\": 100,
-      \\"functions\\": 100,
-      \\"lines\\": 100,
-      \\"statements\\": 100
-    }
-  }
+exports[`default dependencies 1`] = `
+Object {
+  "dependencies": Array [
+    "tslib",
+  ],
+  "dev_dependencies": Array [
+    "@types/jest",
+    "jest",
+    "standard-version",
+    "ts-jest",
+    "tslint",
+    "typescript",
+    "prettier",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier",
+    "tslint-config-ikatyang",
+    "prettier-config-ikatyang",
+  ],
 }
+`;
+
+exports[`default jest.config.js 1`] = `
+"module.exports = {
+  testEnvironment: 'node',
+  moduleFileExtensions: ['ts', 'js', 'json'],
+  testMatch: ['**/tests/**/*.ts', '**/*.test.ts'],
+  transform: { '\\\\\\\\.ts$': 'ts-jest/preprocessor' },
+  mapCoverage: true,
+  coverageReporters: ['lcov', 'text-summary'],
+  collectCoverage: !!process.env.CI,
+  collectCoverageFrom: ['src/**/*.ts'],
+  coverageThreshold: {
+    global: {
+      branches: 100,
+      functions: 100,
+      lines: 100,
+      statements: 100,
+    },
+  },
+};
 "
 `;
 
 exports[`default package.json 1`] = `
 "{
   \\"name\\": \\"my-awesome-project\\",
-  \\"version\\": \\"0.0.0-dev\\",
+  \\"version\\": \\"1.0.0\\",
   \\"description\\": \\"my awesome description\\",
   \\"keywords\\": [
     \\"awesome\\",
@@ -170,9 +173,10 @@ exports[`default package.json 1`] = `
   \\"scripts\\": {
     \\"prepublish\\": \\"yarn run build\\",
     \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
-    \\"test\\": \\"jest --config ./jest.json\\",
+    \\"test\\": \\"jest\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
-    \\"build\\": \\"tsc -p tsconfig.build.json\\"
+    \\"build\\": \\"tsc -p ./tsconfig.build.json\\",
+    \\"release\\": \\"standard-version\\"
   },
   \\"dependencies\\": {},
   \\"devDependencies\\": {},
@@ -183,6 +187,11 @@ exports[`default package.json 1`] = `
     \\"/lib/**/*\\"
   ]
 }
+"
+`;
+
+exports[`default prettier.config.js 1`] = `
+"module.exports = require('prettier-config-ikatyang');
 "
 `;
 
@@ -204,18 +213,23 @@ exports[`default tsconfig.json 1`] = `
 "{
   \\"compilerOptions\\": {
     \\"strict\\": true,
-    \\"target\\": \\"es6\\",
+    \\"lib\\": [\\"es6\\"],
     \\"module\\": \\"commonjs\\",
-    \\"declaration\\": true
+    \\"declaration\\": true,
+    \\"importHelpers\\": true
   },
-  \\"include\\": [\\"src/**/*.ts\\"]
+  \\"include\\": [\\"src/**/*.ts\\", \\"tests/**/*.ts\\"]
 }
 "
 `;
 
 exports[`default tslint.json 1`] = `
 "{
-  \\"extends\\": \\"tslint-config-ikatyang\\"
+  \\"rulesDirectory\\": [\\"tslint-plugin-prettier\\"],
+  \\"extends\\": [\\"tslint-config-ikatyang\\", \\"tslint-config-prettier\\"],
+  \\"rules\\": {
+    \\"prettier\\": true
+  }
 }
 "
 `;
@@ -225,6 +239,7 @@ exports[`enable_codecov = false .travis.yml 1`] = `
 
 node_js:
 - 6
+- 8
 - stable
 
 before_install:
@@ -235,7 +250,7 @@ before_script:
 
 script:
 - yarn run lint
-- yarn run test -- --coverage --verbose
+- yarn run test
 
 cache:
   yarn: true
@@ -298,6 +313,7 @@ exports[`enable_greenkeeper = false .travis.yml 1`] = `
 
 node_js:
 - 6
+- 8
 - stable
 
 before_install:
@@ -305,7 +321,7 @@ before_install:
 
 script:
 - yarn run lint
-- yarn run test -- --coverage --verbose
+- yarn run test
 
 after_script:
 - codecov
@@ -366,12 +382,32 @@ MIT © [Ika](https://github.com/ikatyang)
 "
 `;
 
+exports[`import_tslib = false dependencies 1`] = `
+Object {
+  "dependencies": Array [],
+  "dev_dependencies": Array [
+    "@types/jest",
+    "jest",
+    "standard-version",
+    "ts-jest",
+    "tslint",
+    "typescript",
+    "prettier",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier",
+    "tslint-config-ikatyang",
+    "prettier-config-ikatyang",
+  ],
+}
+`;
+
 exports[`node_version = 4 .travis.yml 1`] = `
 "language: node_js
 
 node_js:
 - 4
 - 6
+- 8
 - stable
 
 before_install:
@@ -383,7 +419,7 @@ before_script:
 
 script:
 - yarn run lint
-- yarn run test -- --coverage --verbose
+- yarn run test
 
 after_script:
 - codecov
@@ -402,7 +438,7 @@ matrix:
 exports[`node_version = 4 package.json 1`] = `
 "{
   \\"name\\": \\"my-awesome-project\\",
-  \\"version\\": \\"0.0.0-dev\\",
+  \\"version\\": \\"1.0.0\\",
   \\"description\\": \\"my awesome description\\",
   \\"keywords\\": [
     \\"awesome\\",
@@ -422,9 +458,10 @@ exports[`node_version = 4 package.json 1`] = `
   \\"scripts\\": {
     \\"prepublish\\": \\"yarn run build\\",
     \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
-    \\"test\\": \\"jest --config ./jest.json\\",
+    \\"test\\": \\"jest\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
-    \\"build\\": \\"tsc -p tsconfig.build.json\\"
+    \\"build\\": \\"tsc -p ./tsconfig.build.json\\",
+    \\"release\\": \\"standard-version\\"
   },
   \\"dependencies\\": {},
   \\"devDependencies\\": {},
@@ -442,19 +479,40 @@ exports[`node_version = 4 tsconfig.json 1`] = `
 "{
   \\"compilerOptions\\": {
     \\"strict\\": true,
-    \\"target\\": \\"es5\\",
+    \\"lib\\": [\\"es6\\"],
     \\"module\\": \\"commonjs\\",
-    \\"declaration\\": true
+    \\"declaration\\": true,
+    \\"importHelpers\\": true
   },
-  \\"include\\": [\\"src/**/*.ts\\"]
+  \\"include\\": [\\"src/**/*.ts\\", \\"tests/**/*.ts\\"]
 }
 "
+`;
+
+exports[`prettier_config_preset = empty string dependencies 1`] = `
+Object {
+  "dependencies": Array [
+    "tslib",
+  ],
+  "dev_dependencies": Array [
+    "@types/jest",
+    "jest",
+    "standard-version",
+    "ts-jest",
+    "tslint",
+    "typescript",
+    "prettier",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier",
+    "tslint-config-ikatyang",
+  ],
+}
 `;
 
 exports[`project_keywords = "" package.json 1`] = `
 "{
   \\"name\\": \\"my-awesome-project\\",
-  \\"version\\": \\"0.0.0-dev\\",
+  \\"version\\": \\"1.0.0\\",
   \\"description\\": \\"my awesome description\\",
   \\"keywords\\": [],
   \\"main\\": \\"lib/index.js\\",
@@ -470,9 +528,10 @@ exports[`project_keywords = "" package.json 1`] = `
   \\"scripts\\": {
     \\"prepublish\\": \\"yarn run build\\",
     \\"lint\\": \\"tslint -p ./tsconfig.json --type-check\\",
-    \\"test\\": \\"jest --config ./jest.json\\",
+    \\"test\\": \\"jest\\",
     \\"prebuild\\": \\"rm -rf ./lib\\",
-    \\"build\\": \\"tsc -p tsconfig.build.json\\"
+    \\"build\\": \\"tsc -p ./tsconfig.build.json\\",
+    \\"release\\": \\"standard-version\\"
   },
   \\"dependencies\\": {},
   \\"devDependencies\\": {},
@@ -484,4 +543,24 @@ exports[`project_keywords = "" package.json 1`] = `
   ]
 }
 "
+`;
+
+exports[`tslint_config_preset with prefix \`tslint:\` dependencies 1`] = `
+Object {
+  "dependencies": Array [
+    "tslib",
+  ],
+  "dev_dependencies": Array [
+    "@types/jest",
+    "jest",
+    "standard-version",
+    "ts-jest",
+    "tslint",
+    "typescript",
+    "prettier",
+    "tslint-plugin-prettier",
+    "tslint-config-prettier",
+    "prettier-config-ikatyang",
+  ],
+}
 `;

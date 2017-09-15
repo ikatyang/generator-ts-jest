@@ -1,6 +1,6 @@
 {
   "name": "<%= project_name %>",
-  "version": "0.0.0-dev",
+  "version": "1.0.0",
   "description": <%- JSON.stringify(project_description) %>,
   "keywords": <%- JSON.stringify(project_keywords, null, 4).replace(/\n\]$/, '\n  ]') %>,
   "main": "<%= generated_directory %>/index.js",
@@ -16,9 +16,10 @@
   "scripts": {
     "prepublish": "yarn run build",
     "lint": "tslint -p ./tsconfig.json --type-check",
-    "test": "jest --config ./jest.json",
+    "test": "jest",
     "prebuild": "rm -rf ./<%= generated_directory %>",
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsc -p ./tsconfig.build.json",
+    "release": "standard-version"
   },
   "dependencies": {},
   "devDependencies": {},
