@@ -1,15 +1,3 @@
-# Change Log
-
-All changes to this project will be documented in this file.
-
-> **Tags:**
-> - 💥 [Breaking Change]
-> - 🚀 [New Feature]
-> - 🐛 [Bug Fix]
-> - 📝 [Documentation]
-> - 🏠 [Internal]
-> - 💅 [Polish]
-
 <a name="v1.1.0"></a>
 ## [v1.1.0](https://github.com/ikatyang/generator-ts-jest/compare/v1.0.3...v1.1.0) (2017-07-09)
 
