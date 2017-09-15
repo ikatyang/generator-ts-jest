@@ -1,3 +1,7 @@
 {
-  "extends": "<%= tslint_config_preset %>"
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "extends": ["<%= tslint_config_preset %>", "tslint-config-prettier"],
+  "rules": {
+    "prettier": true
+  }
 }

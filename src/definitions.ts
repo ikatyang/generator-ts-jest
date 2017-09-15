@@ -9,9 +9,11 @@ export interface Answers {
   user_name: string;
   user_email: string;
   tslint_config_preset: string;
+  prettier_config_preset: string;
   node_version: string;
   source_directory: string;
   generated_directory: string;
+  import_tslib: boolean;
   use_exact_version: boolean;
   enable_codecov: boolean;
   enable_greenkeeper: boolean;
@@ -19,97 +21,133 @@ export interface Answers {
 
 export type Fields = Answers & {
   project_keywords: string[];
-  tsconfig_target: string;
   node_versions: string[];
   github_profile: string;
   github_repository: string;
 };
 
-export const get_dependencies = (fields: Fields) => [
-  '@types/jest',
-  'jest',
-  'ts-jest',
-  'tslint',
-  fields.tslint_config_preset,
-  'typescript',
-];
+export const get_dependencies = (fields: Fields) =>
+  fields.import_tslib ? ['tslib'] : [];
 
-export const get_questions = (appname: string) => [
-  {
+export const get_dev_dependencies = (fields: Fields) =>
+  [
+    '@types/jest',
+    'jest',
+    'standard-version',
+    'ts-jest',
+    'tslint',
+    'typescript',
+    'prettier',
+    'tslint-plugin-prettier',
+    'tslint-config-prettier',
+  ]
+    .concat(
+      fields.tslint_config_preset.startsWith('tslint:')
+        ? []
+        : fields.tslint_config_preset,
+    )
+    .concat(
+      fields.prettier_config_preset.length === 0
+        ? []
+        : fields.prettier_config_preset,
+    );
+
+export const get_questions = (appname: string) => ({
+  project_name: {
     type: 'input',
-    name: 'project_name',
     message: 'Project Name',
     default: dashify(appname),
   },
-  {
+  project_description: {
     type: 'input',
-    name: 'project_description',
     message: 'Project Description',
   },
-  {
+  project_keywords: {
     type: 'input',
-    name: 'project_keywords',
     message: 'Project Keywords',
   },
-  {
+  user_name: {
     type: 'input',
-    name: 'user_name',
     message: 'User Name',
     default: get_git_info('user.name'),
   },
-  {
+  user_email: {
     type: 'input',
-    name: 'user_email',
     message: 'User Email',
     default: get_git_info('user.email'),
   },
-  {
+  github_username: {
     type: 'input',
-    name: 'github_username',
     message: 'GitHub Username',
     default: get_git_info('user.name'),
   },
-  {
+  tslint_config_preset: {
     type: 'input',
-    name: 'tslint_config_preset',
     message: 'TSLint Config Preset',
     default: 'tslint-config-ikatyang',
   },
-  {
-    type: 'list',
-    name: 'node_version',
-    message: 'Target Node Version',
-    default: '6',
-    choices: ['4', '6', 'stable'],
-  },
-  {
+  prettier_config_preset: {
     type: 'input',
-    name: 'source_directory',
+    message: 'Prettier Config Preset',
+    default: 'prettier-config-ikatyang',
+  },
+  node_version: {
+    type: 'list',
+    message: 'Target Node Version',
+    default: '4',
+    choices: ['4', '6', '8'],
+  },
+  source_directory: {
+    type: 'input',
     message: 'Source Directory',
     default: 'src',
   },
-  {
+  generated_directory: {
     type: 'input',
-    name: 'generated_directory',
     message: 'Generated Directory',
     default: 'lib',
   },
-  {
+  import_tslib: {
     type: 'confirm',
-    name: 'use_exact_version',
+    message: 'Import helpers from tslib',
+    default: true,
+  },
+  use_exact_version: {
+    type: 'confirm',
     message: 'Use Exact Version',
     default: true,
   },
-  {
+  enable_codecov: {
     type: 'confirm',
-    name: 'enable_codecov',
     message: 'Enable Codecov',
     default: true,
   },
-  {
+  enable_greenkeeper: {
     type: 'confirm',
-    name: 'enable_greenkeeper',
     message: 'Enable Greenkeeper',
     default: true,
   },
-];
+});
+
+export const get_fields = (answers: Answers): Fields => {
+  const questions = get_questions(answers.project_name);
+  const keywords_text =
+    typeof answers.project_keywords === 'string'
+      ? answers.project_keywords.trim()
+      : '';
+  return {
+    ...answers,
+    project_keywords:
+      keywords_text.length === 0
+        ? []
+        : keywords_text
+            .split(/\s+/)
+            .map(dashify)
+            .sort(),
+    node_versions: questions.node_version.choices
+      .slice(questions.node_version.choices.indexOf(answers.node_version))
+      .concat('stable'),
+    github_profile: `https://github.com/${answers.github_username}`,
+    github_repository: `https://github.com/${answers.github_username}/${answers.project_name}`,
+  };
+};
