@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/ikatyang/generator-ts-jest/compare/v1.2.0...v1.2.1) (2017-09-19)
+
+
+### Bug Fixes
+
+* installation error ([#60](https://github.com/ikatyang/generator-ts-jest/issues/60)) ([7c59f18](https://github.com/ikatyang/generator-ts-jest/commit/7c59f18))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/ikatyang/generator-ts-jest/compare/v1.1.0...v1.2.0) (2017-09-15)
 
