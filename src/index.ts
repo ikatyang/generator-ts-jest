@@ -58,20 +58,19 @@ class TsJestGenerator extends Generator {
     );
   }
 
-  public install() {
+  public async install() {
     const dependencies = get_dependencies(this.fields);
     const dev_dependencies = get_dev_dependencies(this.fields);
 
     // istanbul ignore next
-    this.yarnInstall(
-      dev_dependencies,
-      {
-        dev: true,
-        'ignore-scripts': true,
-        ...this.fields.use_exact_version ? { exact: true } : {},
-      },
-      () => this.yarnInstall(dependencies),
-    );
+    await (this as any).yarnInstall(dev_dependencies, {
+      dev: true,
+      'ignore-scripts': true,
+      ...this.fields.use_exact_version ? { exact: true } : {},
+    });
+
+    // istanbul ignore next
+    await (this as any).yarnInstall(dependencies);
   }
 }
 
