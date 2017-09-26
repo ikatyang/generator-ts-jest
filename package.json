@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@types/dedent": "0.7.0",
-    "@types/jest": "21.1.0",
+    "@types/jest": "21.1.1",
     "@types/lodash.kebabcase": "4.1.3",
     "@types/yeoman-generator": "1.0.3",
     "@types/yeoman-test": "1.7.1",
