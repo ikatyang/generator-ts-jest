@@ -20,8 +20,8 @@ class TsJestGenerator extends Generator {
   public fields: Fields;
 
   // tslint:disable-next-line:promise-function-async
-  public prompting() {
-    const questions = get_questions(this.appname);
+  public async prompting() {
+    const questions = await get_questions(this);
     return this.prompt(
       Object.keys(questions).reduce(
         (current, name: keyof typeof questions) => [
