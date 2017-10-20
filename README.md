@@ -12,10 +12,10 @@ Quick generate TypeScript project, testing with Jest
 
 ```sh
 # using npm
-npm install -g yo generator-ts-jest
+npm install --global generator-ts-jest yo
 
 # using yarn
-yarn global add yo generator-ts-jest
+yarn global add generator-ts-jest yo
 ```
 
 ## Usage
