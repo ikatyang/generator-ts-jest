@@ -11,15 +11,19 @@
   "types": "app/index.d.ts",
   "repository": "https://github.com/ikatyang/generator-ts-jest",
   "homepage": "https://github.com/ikatyang/generator-ts-jest#readme",
-  "author": "ikatyang",
+  "author": {
+    "name": "Ika",
+    "email": "ikatyang@gmail.com",
+    "url": "https://github.com/ikatyang"
+  },
   "license": "MIT",
   "scripts": {
     "prepublish": "npm run build",
     "lint": "tslint -p ./tsconfig.json --type-check",
     "prebuild": "rm -rf ./app",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p ./tsconfig.build.json",
     "postbuild": "cp -r ./src/templates ./app",
-    "test": "jest --config ./jest.json",
+    "test": "jest",
     "release": "standard-version"
   },
   "dependencies": {

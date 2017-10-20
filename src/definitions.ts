@@ -1,4 +1,4 @@
-import dashify = require('lodash.kebabcase'); // tslint:disable-line:no-require-imports
+import dashify = require('lodash.kebabcase');
 import { get_git_info } from './utils';
 
 export interface Answers {
