@@ -21,7 +21,6 @@ export interface Answers {
 
 export type Fields = Answers & {
   project_keywords: string[];
-  node_versions: string[];
   github_profile: string;
   github_repository: string;
 };
@@ -150,7 +149,6 @@ export const get_fields = (answers: Answers): Fields => {
             .split(/\s+/)
             .map(dashify)
             .sort(),
-    node_versions: [answers.node_version, 'stable'],
     github_profile: `https://github.com/${answers.github_username}`,
     github_repository: `https://github.com/${answers.github_username}/${answers.project_name}`,
   };
