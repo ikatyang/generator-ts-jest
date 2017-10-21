@@ -24,7 +24,7 @@
   "dependencies": {},
   "devDependencies": {},
   "engines": {
-    "node": ">= <%= node_versions[0] %>"
+    "node": ">= <%= node_version %>"
   },
   "files": [
     "/<%= generated_directory %>/**/*"
