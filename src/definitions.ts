@@ -53,6 +53,11 @@ export const get_dev_dependencies = (fields: Fields) =>
     );
 
 export async function get_questions(generator: Generator) {
+  const username =
+    (await (generator.user.github.username() as any)) ||
+    // tslint:disable-next-line:strict-boolean-expressions
+    /*istanbul ignore next*/ generator.user.git.name();
+
   return {
     project_name: {
       type: 'input',
@@ -80,20 +85,17 @@ export async function get_questions(generator: Generator) {
     github_username: {
       type: 'input',
       message: 'GitHub Username',
-      default:
-        (await (generator.user.github.username() as any)) ||
-        // tslint:disable-next-line:strict-boolean-expressions
-        /*istanbul ignore next*/ generator.user.git.name(),
+      default: username,
     },
     tslint_config_preset: {
       type: 'input',
       message: 'TSLint Config Preset',
-      default: 'tslint-config-ikatyang',
+      default: `tslint-config-${username}`,
     },
     prettier_config_preset: {
       type: 'input',
       message: 'Prettier Config Preset',
-      default: 'prettier-config-ikatyang',
+      default: `prettier-config-${username}`,
     },
     node_version: {
       type: 'list',
