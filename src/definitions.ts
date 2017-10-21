@@ -1,5 +1,5 @@
 import dashify = require('lodash.kebabcase');
-import { get_git_info } from './utils';
+import Generator = require('yeoman-generator');
 
 export interface Answers {
   project_name: string;
@@ -52,82 +52,87 @@ export const get_dev_dependencies = (fields: Fields) =>
         : fields.prettier_config_preset,
     );
 
-export const get_questions = (appname: string) => ({
-  project_name: {
-    type: 'input',
-    message: 'Project Name',
-    default: dashify(appname),
-  },
-  project_description: {
-    type: 'input',
-    message: 'Project Description',
-  },
-  project_keywords: {
-    type: 'input',
-    message: 'Project Keywords',
-  },
-  user_name: {
-    type: 'input',
-    message: 'User Name',
-    default: get_git_info('user.name'),
-  },
-  user_email: {
-    type: 'input',
-    message: 'User Email',
-    default: get_git_info('user.email'),
-  },
-  github_username: {
-    type: 'input',
-    message: 'GitHub Username',
-    default: get_git_info('user.name'),
-  },
-  tslint_config_preset: {
-    type: 'input',
-    message: 'TSLint Config Preset',
-    default: 'tslint-config-ikatyang',
-  },
-  prettier_config_preset: {
-    type: 'input',
-    message: 'Prettier Config Preset',
-    default: 'prettier-config-ikatyang',
-  },
-  node_version: {
-    type: 'list',
-    message: 'Target Node Version',
-    default: '4',
-    choices: ['4', '6', '8'],
-  },
-  source_directory: {
-    type: 'input',
-    message: 'Source Directory',
-    default: 'src',
-  },
-  generated_directory: {
-    type: 'input',
-    message: 'Generated Directory',
-    default: 'lib',
-  },
-  import_tslib: {
-    type: 'confirm',
-    message: 'Import helpers from tslib',
-    default: true,
-  },
-  use_exact_version: {
-    type: 'confirm',
-    message: 'Use Exact Version',
-    default: true,
-  },
-  enable_codecov: {
-    type: 'confirm',
-    message: 'Enable Codecov',
-    default: true,
-  },
-  enable_greenkeeper: {
-    type: 'confirm',
-    message: 'Enable Greenkeeper',
-    default: true,
-  },
-});
+export async function get_questions(generator: Generator) {
+  return {
+    project_name: {
+      type: 'input',
+      message: 'Project Name',
+      default: dashify(generator.appname),
+    },
+    project_description: {
+      type: 'input',
+      message: 'Project Description',
+    },
+    project_keywords: {
+      type: 'input',
+      message: 'Project Keywords',
+    },
+    user_name: {
+      type: 'input',
+      message: 'User Name',
+      default: generator.user.git.name(),
+    },
+    user_email: {
+      type: 'input',
+      message: 'User Email',
+      default: generator.user.git.email(),
+    },
+    github_username: {
+      type: 'input',
+      message: 'GitHub Username',
+      default:
+        (await (generator.user.github.username() as any)) ||
+        // tslint:disable-next-line:strict-boolean-expressions
+        /*istanbul ignore next*/ generator.user.git.name(),
+    },
+    tslint_config_preset: {
+      type: 'input',
+      message: 'TSLint Config Preset',
+      default: 'tslint-config-ikatyang',
+    },
+    prettier_config_preset: {
+      type: 'input',
+      message: 'Prettier Config Preset',
+      default: 'prettier-config-ikatyang',
+    },
+    node_version: {
+      type: 'list',
+      message: 'Target Node Version',
+      default: '4',
+      choices: ['4', '6', '8'],
+    },
+    source_directory: {
+      type: 'input',
+      message: 'Source Directory',
+      default: 'src',
+    },
+    generated_directory: {
+      type: 'input',
+      message: 'Generated Directory',
+      default: 'lib',
+    },
+    import_tslib: {
+      type: 'confirm',
+      message: 'Import helpers from tslib',
+      default: true,
+    },
+    use_exact_version: {
+      type: 'confirm',
+      message: 'Use Exact Version',
+      default: true,
+    },
+    enable_codecov: {
+      type: 'confirm',
+      message: 'Enable Codecov',
+      default: true,
+    },
+    enable_greenkeeper: {
+      type: 'confirm',
+      message: 'Enable Greenkeeper',
+      default: true,
+    },
+  };
+}
 
 export const get_fields = (answers: Answers): Fields => {
   const keywords_text =
