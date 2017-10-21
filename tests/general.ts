@@ -9,6 +9,11 @@ import {
   Fields,
 } from '../src/definitions';
 import MyGenerator = require('../src/index');
+
+jest
+  .spyOn(MyGenerator.prototype.user.github, 'username')
+  .mockImplementation(async () => '<github-username>');
+
 let dirname: string;
 let run_context: helpers.RunContext;
 
