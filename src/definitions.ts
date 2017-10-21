@@ -81,7 +81,8 @@ export async function get_questions(generator: Generator) {
       type: 'input',
       message: 'GitHub Username',
       default:
-        (await generator.user.github.username()) ||
+        (await (generator.user.github.username() as any)) ||
+        // tslint:disable-next-line:strict-boolean-expressions
         /*istanbul ignore next*/ generator.user.git.name(),
     },
     tslint_config_preset: {
