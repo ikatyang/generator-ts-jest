@@ -1,3 +1,4 @@
+import dedent = require('dedent');
 import * as fs from 'fs';
 import Generator = require('yeoman-generator');
 import {
@@ -9,8 +10,6 @@ import {
   Fields,
 } from './definitions';
 
-import dedent = require('dedent'); // tslint:disable-line:no-require-imports
-
 const helpers = {
   dedent,
   write_if_present: (write: boolean, content: string) => (write ? content : ''),
@@ -19,7 +18,6 @@ const helpers = {
 class TsJestGenerator extends Generator {
   public fields: Fields;
 
-  // tslint:disable-next-line:promise-function-async
   public async prompting() {
     const questions = await get_questions(this);
     return this.prompt(
@@ -58,19 +56,22 @@ class TsJestGenerator extends Generator {
     );
   }
 
-  public async install() {
+  public install() {
     const dependencies = get_dependencies(this.fields);
     const dev_dependencies = get_dev_dependencies(this.fields);
 
-    // istanbul ignore next
-    await (this as any).yarnInstall(dev_dependencies, {
-      dev: true,
-      'ignore-scripts': true,
-      ...this.fields.use_exact_version ? { exact: true } : {},
-    });
+    this.yarnInstall(
+      dev_dependencies,
+      {
+        dev: true,
+        'ignore-scripts': true,
 
-    // istanbul ignore next
-    await (this as any).yarnInstall(dependencies);
+        ...this.fields.use_exact_version
+          ? { exact: true }
+          : /* istanbul ignore next */ {},
+      },
+      () => this.yarnInstall(dependencies),
+    );
   }
 }
 
