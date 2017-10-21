@@ -41,7 +41,7 @@ class TsJestGenerator extends Generator {
     };
     fs
       .readdirSync(template_dirname)
-      .filter(filename => filename !== 'src')
+      .filter(filename => filename !== 'src' && filename !== 'tests')
       .forEach(filename => {
         this.fs.copyTpl(
           this.templatePath(`${template_dirname}/${filename}`),
@@ -52,6 +52,11 @@ class TsJestGenerator extends Generator {
     this.fs.copyTpl(
       this.templatePath(`${template_dirname}/src/index.ts`),
       this.destinationPath(`${this.fields.source_directory}/index.ts`),
+      template_options,
+    );
+    this.fs.copyTpl(
+      this.templatePath(`${template_dirname}/tests/test.ts`),
+      this.destinationPath(`tests/test.ts`),
       template_options,
     );
   }
