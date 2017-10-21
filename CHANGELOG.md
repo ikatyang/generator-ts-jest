@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/ikatyang/generator-ts-jest/compare/v1.2.1...v1.3.0) (2017-10-21)
+
+
+### Bug Fixes
+
+* **install:** downgrade yeoman-generator to get installer working ([#88](https://github.com/ikatyang/generator-ts-jest/issues/88)) ([dd92a00](https://github.com/ikatyang/generator-ts-jest/commit/dd92a00))
+* **travis:** no need to test every node version, head and tail is enough ([#84](https://github.com/ikatyang/generator-ts-jest/issues/84)) ([2b4ce53](https://github.com/ikatyang/generator-ts-jest/commit/2b4ce53))
+
+
+### Features
+
+* generate dummy function and test ([#89](https://github.com/ikatyang/generator-ts-jest/issues/89)) ([d320706](https://github.com/ikatyang/generator-ts-jest/commit/d320706))
+* use username as default config preset name ([#90](https://github.com/ikatyang/generator-ts-jest/issues/90)) ([ce4add0](https://github.com/ikatyang/generator-ts-jest/commit/ce4add0))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/ikatyang/generator-ts-jest/compare/v1.2.0...v1.2.1) (2017-09-19)
 
