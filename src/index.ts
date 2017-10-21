@@ -65,7 +65,10 @@ class TsJestGenerator extends Generator {
       {
         dev: true,
         'ignore-scripts': true,
-        ...this.fields.use_exact_version ? { exact: true } : {},
+
+        ...this.fields.use_exact_version
+          ? { exact: true }
+          : /* istanbul ignore next */ {},
       },
       () => this.yarnInstall(dependencies),
     );
