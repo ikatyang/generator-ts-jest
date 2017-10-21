@@ -43,6 +43,9 @@ describe('default', () => {
   test('src/index.ts', () => {
     assert_file_content('src/index.ts');
   });
+  test('tests/test.ts', () => {
+    assert_file_content('tests/test.ts');
+  });
   test('.editorconfig', () => {
     assert_file_content('.editorconfig');
   });
