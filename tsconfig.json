@@ -3,7 +3,8 @@
     "declaration": true,
     "module": "commonjs",
     "strict": true,
-    "target": "es6"
+    "target": "es6",
+    "importHelpers": true
   },
   "include": ["src/*.ts", "tests/*.ts"]
 }
