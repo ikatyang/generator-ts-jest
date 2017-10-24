@@ -52,10 +52,7 @@ export const get_dev_dependencies = (fields: Fields) =>
     );
 
 export async function get_questions(generator: Generator) {
-  const username =
-    (await (generator.user.github.username() as any)) ||
-    // tslint:disable-next-line:strict-boolean-expressions
-    /*istanbul ignore next*/ generator.user.git.name();
+  const username = await get_username(generator);
 
   return {
     project_name: {
@@ -153,3 +150,12 @@ export const get_fields = (answers: Answers): Fields => {
     github_repository: `https://github.com/${answers.github_username}/${answers.project_name}`,
   };
 };
+
+async function get_username(generator: Generator) {
+  try {
+    return generator.user.github.username();
+  } catch {
+    // istanbul ignore next
+    return generator.user.git.email().split('@', 1)[0];
+  }
+}
