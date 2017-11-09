@@ -131,9 +131,9 @@
   dependencies:
     "@types/inquirer" "*"
 
-"@types/yeoman-test@1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@types/yeoman-test/-/yeoman-test-1.7.2.tgz#e8b194a10c97fa8d5bad997664214bb27ca695ee"
+"@types/yeoman-test@1.7.3":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/@types/yeoman-test/-/yeoman-test-1.7.3.tgz#12e09114b0158361c9e9800458c762e56c7a4c72"
   dependencies:
     "@types/yeoman-generator" "*"
 
