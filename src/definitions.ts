@@ -147,7 +147,9 @@ export const get_fields = (answers: Answers): Fields => {
             .map(dashify)
             .sort(),
     github_profile: `https://github.com/${answers.github_username}`,
-    github_repository: `https://github.com/${answers.github_username}/${answers.project_name}`,
+    github_repository: `https://github.com/${answers.github_username}/${
+      answers.project_name
+    }`,
   };
 };
 
