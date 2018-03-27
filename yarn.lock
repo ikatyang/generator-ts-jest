@@ -6,6 +6,10 @@
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@types/dedent/-/dedent-0.7.0.tgz#155f339ca404e6dd90b9ce46a3f78fd69ca9b050"
 
+"@types/events@*":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
+
 "@types/inquirer@*":
   version "0.0.35"
   resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-0.0.35.tgz#e054657cf2d10963823957d4d06ec244f05c65be"
@@ -131,10 +135,11 @@
   dependencies:
     "@types/inquirer" "*"
 
-"@types/yeoman-test@1.7.3":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@types/yeoman-test/-/yeoman-test-1.7.3.tgz#12e09114b0158361c9e9800458c762e56c7a4c72"
+"@types/yeoman-test@1.7.4":
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/@types/yeoman-test/-/yeoman-test-1.7.4.tgz#0f49009dd5254a302e1b72329f9e59743b5b870a"
   dependencies:
+    "@types/events" "*"
     "@types/yeoman-generator" "*"
 
 JSONStream@^1.0.4:
