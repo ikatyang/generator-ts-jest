@@ -170,13 +170,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/yeoman-generator@*":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@types/yeoman-generator/-/yeoman-generator-3.1.0.tgz#51642d7e6ec1b1c67707ab9df17e78f7b5d33210"
-  dependencies:
-    "@types/inquirer" "*"
-
-"@types/yeoman-generator@1.0.4":
+"@types/yeoman-generator@*", "@types/yeoman-generator@1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@types/yeoman-generator/-/yeoman-generator-1.0.4.tgz#e8a1cd15ff6f621b5b42842bd2d4c923f76e2eaa"
   dependencies:
