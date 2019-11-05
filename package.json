@@ -36,7 +36,7 @@
     "@types/dedent": "0.7.0",
     "@types/jest": "21.1.10",
     "@types/lodash.kebabcase": "4.1.6",
-    "@types/yeoman-generator": "1.0.4",
+    "@types/yeoman-generator": "3.1.4",
     "@types/yeoman-test": "1.7.4",
     "jest": "21.2.1",
     "prettier": "1.9.2",
