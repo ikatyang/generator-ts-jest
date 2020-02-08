@@ -34,11 +34,11 @@
   },
   "devDependencies": {
     "@types/dedent": "0.7.0",
-    "@types/jest": "21.1.10",
+    "@types/jest": "25.1.2",
     "@types/lodash.kebabcase": "4.1.6",
     "@types/yeoman-generator": "1.0.4",
     "@types/yeoman-test": "1.7.4",
-    "jest": "21.2.1",
+    "jest": "25.1.0",
     "prettier": "1.9.2",
     "prettier-config-ikatyang": "1.1.1",
     "standard-version": "4.4.0",
